@@ -95,3 +95,11 @@ body {
 #geolocation:hover i{
     color: #fff;
 }
+
+
+#meteo-day-1, #meteo-day-2, #meteo-day-3 {
+  height: 400px;
+  border: 4px solid #111;
+  background-image: url('images/wather1.jpeg');
+  
+}

@@ -202,7 +202,7 @@ function displayMeteo(data){
         // Update DOM
         code = meteo.weather[0].id;
         icon.attr('class', 'wi wi-owm-' + code);
-        temperature.text(toCelsius(meteo.main.temp) + "°C");
+        temperature.text(meteo.main.temp+ "°F");
         humidity.text(meteo.main.humidity + "%");
         wind.text(meteo.wind.speed + " km/h");
         tempMoyenne += meteo.main.temp;
