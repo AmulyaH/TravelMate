@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css"/>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/balloon-css/0.5.0/balloon.min.css">
+    <script src="https://use.fontawesome.com/389802374e.js"></script>
+    <title>TravelMate</title>
+    <link rel="stylesheet" href="css/index.css" />
+
+  </head>
+
+  <body>
+    <div id="myTopnav" class="topnav p-2">
+        <button id="defaultOpen" class="anibutton tabbutton" onclick="openPage('home', this, 'cadetblue')"> <i class="fa fa-home fa-lg"></i> </button>
+        <button class="anibutton tabbutton font-weight-bolder" onclick="openPage('about', this, 'cadetblue')"> About </button>
+        <button class="anibutton tabbutton font-weight-bolder" onclick="openPage('contact', this, 'cadetblue')"> Contact </button>
+        <a href="javascript:void(0);"  class="icon font-weight-bolder" onclick="myFunction()"><i class="fa fa-bars fa-2x"></i></a>
+    </div>
+
+    <div>
+        <div id="home" class="container tabcontent divPadding">
+            <form id="meteo-form" class="form-inline my-2 my-lg-0">
+                <span id="geolocation" data-balloon="Geolocate me!" data-balloon-pos="down">
+                    <i class="fa fa-crosshairs"></i>
+                </span>
+                <input name="meteo-city" class="form-control mr-sm-2" placeholder="City" type="text">
+                <button class="btn btn-secondary my-2 my-sm-0" onclick="openPage('options', this, 'cadetblue')" type="submit">Search</button>
+            </form>
+          </div>
+
+          <div id="options" class="container-fluid tabcontent divPadding">
+            <div class="row">
+              <div class="col-sm-8 col-md-5 col-lg-3 col-xs-12 offset-lg-1">
+                <div class="row1colur p-4">
+                    <button class="btn btn-secondary my-2 my-sm-0" onclick="weather('options', this, 'cadetblue')" type="submit">Weather Forecast</button>
+                </div>
+              </div>
+              <div class="col-sm-8 col-md-5 col-lg-3 col-xs-12">
+                <div class="row1colur p-4">
+                    <button class="btn btn-secondary my-2 my-sm-0" onclick="hotels('options', this, 'cadetblue')" type="submit">Hotels near by</button>
+                </div>
+              </div>
+              <div class="col-sm-8 col-md-5 col-lg-3 col-xs-12">
+                <div class="row1colur p-4">
+                    <button class="btn btn-secondary my-2 my-sm-0" onclick="places('options', this, 'cadetblue')" type="submit">Tourist places near by</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="weather" class="container tabcontent divPadding">
+            <form id="meteo-form" class="form-inline my-2 my-lg-0">
+                <span id="geolocation" data-balloon="Geolocate me!" data-balloon-pos="down">
+                    <i class="fa fa-crosshairs"></i>
+                </span>
+                <input name="meteo-city" class="form-control mr-sm-2" placeholder="City" type="text">
+                <button class="btn btn-secondary my-2 my-sm-0" onclick="openPage('options', this, 'cadetblue')" type="submit">Search</button>
+            </form>
+          </div>
+
+          <div id="places" class="container tabcontent divPadding">
+            <form id="meteo-form" class="form-inline my-2 my-lg-0">
+                <span id="geolocation" data-balloon="Geolocate me!" data-balloon-pos="down">
+                    <i class="fa fa-crosshairs"></i>
+                </span>
+                <input name="meteo-city" class="form-control mr-sm-2" placeholder="City" type="text">
+                <button class="btn btn-secondary my-2 my-sm-0" onclick="openPage('options', this, 'cadetblue')" type="submit">Search</button>
+            </form>
+          </div>
+
+          <div id="hotels" class="container tabcontent divPadding">
+            <form id="meteo-form" class="form-inline my-2 my-lg-0">
+                <span id="geolocation" data-balloon="Geolocate me!" data-balloon-pos="down">
+                    <i class="fa fa-crosshairs"></i>
+                </span>
+                <input name="meteo-city" class="form-control mr-sm-2" placeholder="City" type="text">
+                <button class="btn btn-secondary my-2 my-sm-0" onclick="openPage('options', this, 'cadetblue')" type="submit">Search</button>
+            </form>
+          </div>
+
+
+          <div id="about" class="container-fluid tabcontent divPadding">
+            <div class="row">
+              
+            </div>
+          </div>
+
+          <form action="mailto:amulya2@pdx.edu" method="post" enctype="text/plain">
+            <div id="contact" class="container tabcontent divPadding rounded mp-4">
+              <div class="form-group row">
+                <div class="col-sm-10 offset-sm-1 col-md-10 offset-md-1 col-lg-4 offset-lg-4  col-xs-5 offset-sm-1">
+                  <div class="divcontact p-5 rounded">
+                      <div class="form-group row">
+                        <div class="col-sm-12">
+                          <h1>Contact US</h1>
+                        </div>
+                      </div>
+            
+                      <div class="form-group row">
+                        <div class="col-sm-12">
+                          <label for="fname">Your Name *</label>
+                          <input type="text" class="form-control form-control-lg" id="name" name="fname" required>
+                        </div>
+                      </div>
+            
+                      <div class="form-group row">
+                        <div class="col-sm-12">
+                          <label for="email">Your Email *</label>
+                          <input type="email" class="form-control form-control-lg" id="txtemail" name="email" required>
+                        </div>
+                      </div>
+            
+                      <div class="form-group row">
+                        <div class="col-sm-12">
+                          <label for="comment" id="lblcomment">Write your meaasge</label>
+                          <textarea id="txtmessage" rows="5" class="form-control form-control-lg" name="comment"></textarea>
+                        </div>
+                      </div>
+            
+                      <div class="form-group row">
+                        <div class="col-sm-6 offset-sm-2">
+                          <input type="submit" id="btnSubmit" class="anibutton" value="Submit">
+                        </div>
+                      </div> 
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+    </div>
+
+    <script>
+        function openPage(pageName,elmnt,color) 
+        {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) 
+            {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("anibutton");
+            for (i = 0; i < tablinks.length; i++) 
+            {
+                tablinks[i].style.backgroundColor = "";
+            }
+            document.getElementById(pageName).style.display = "block";
+            elmnt.style.backgroundColor = color;
+        }
+    
+          document.getElementById("defaultOpen").click();
+    
+        function myFunction() 
+        {
+            var x = document.getElementById("myTopnav");
+            if (x.className === "topnav") 
+            {
+                x.className += " responsive";
+            } 
+            else 
+            {
+                x.className = "topnav";
+            }
+        }   
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment-with-locales.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/suncalc/1.8.0/suncalc.min.js"></script>
+    <script src="js/app.js"></script>   
+  </body>
+</html>
