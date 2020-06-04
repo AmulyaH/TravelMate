@@ -1,6 +1,49 @@
 
 var API_KEY = "6841e5450643e5d4ff59981dbf58944e";
 
+
+var javascriptGoogleAPIKey = "AIzaSyCVycAqj-TNg29EHhT1rFd9gxNmBF9tMKQ" ; 
+
+var OpenweatherAPI = "06d6ba56c4f8e2f08f38c52fd8224fb6";
+
+
+function saveForm(){
+    
+}
+
+function openPage(pageName,elmnt,color) 
+{
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) 
+    {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("anibutton");
+    for (i = 0; i < tablinks.length; i++) 
+    {
+        tablinks[i].style.backgroundColor = "";
+    }
+    document.getElementById(pageName).style.display = "block";
+    elmnt.style.backgroundColor = color;
+
+}
+
+document.getElementById("defaultOpen").click();
+    
+function myFunction() 
+{
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") 
+    {
+        x.className += " responsive";
+    } 
+    else 
+    {
+    x.className = "topnav";
+    }
+}   
+
 // -- On load --
 $(document).ready(function(){
     // If geolocation is not supported, hide the geolocaion icon
@@ -31,6 +74,7 @@ $(document).ready(function(){
     loading = $('#search-loading');
     loading.attr('class', 'loading inload');
     // Get and update meteo
+
     getMeteoByCity(city, function (data, error) {
         if (error == null) {
             displayMeteo(data);
@@ -46,6 +90,17 @@ $(document).ready(function(){
     });
 });
 
+function getMeteoByCity(city, callback){
+    $.ajax({
+        url: "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&APPID=" + OpenweatherAPI,
+        success: function(data){
+            callback(data, null);
+        },
+        error: function(req, status, error){
+            callback(null, error);
+        }
+    });
+}
 
 // -- Core --
 $("#meteo-form").submit(function (event) {
@@ -96,21 +151,11 @@ $("#geolocation").click(function (event) {
     });
 });
 
-function getMeteoByCity(city, callback){
-    $.ajax({
-        url: "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&APPID=" + API_KEY,
-        success: function(data){
-            callback(data, null);
-        },
-        error: function(req, status, error){
-            callback(null, error);
-        }
-    });
-}
+
 
 function getMeteoByCoordinates(lat, lon, callback){
     $.ajax({
-        url: "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&APPID=" + API_KEY,
+        url: "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&APPID=" + OpenweatherAPI,
         success: function(data){
             callback(data, null);
         },

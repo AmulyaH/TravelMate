@@ -34,14 +34,13 @@
         <a href="javascript:void(0);"  class="icon font-weight-bolder" onclick="myFunction()"><i class="fa fa-bars fa-2x"></i></a>
     </div>
 
-    <div>
         <div id="home" class="container tabcontent divPadding">
             <form id="meteo-form" class="form-inline my-2 my-lg-0">
                 <span id="geolocation" data-balloon="Geolocate me!" data-balloon-pos="down">
                     <i class="fa fa-crosshairs"></i>
                 </span>
                 <input name="meteo-city" class="form-control mr-sm-2" placeholder="City" type="text">
-                <button class="btn btn-secondary my-2 my-sm-0" onclick="openPage('options', this, 'cadetblue')" type="submit">Search</button>
+                <button class="btn btn-secondary my-2 my-sm-0" onclick="openPage('options', this, 'cadetblue')" type="submit">Search</button> 
             </form>
           </div>
 
@@ -49,50 +48,163 @@
             <div class="row">
               <div class="col-sm-8 col-md-5 col-lg-3 col-xs-12 offset-lg-1">
                 <div class="row1colur p-4">
-                    <button class="btn btn-secondary my-2 my-sm-0" onclick="weather('options', this, 'cadetblue')" type="submit">Weather Forecast</button>
+                    <button class="btn btn-secondary my-2 my-sm-0" onclick="openPage('weather', this, 'cadetblue')" type="submit">Weather Forecast</button>
                 </div>
               </div>
               <div class="col-sm-8 col-md-5 col-lg-3 col-xs-12">
                 <div class="row1colur p-4">
-                    <button class="btn btn-secondary my-2 my-sm-0" onclick="hotels('options', this, 'cadetblue')" type="submit">Hotels near by</button>
+                    <button class="btn btn-secondary my-2 my-sm-0" onclick="openPage('hotels', this, 'cadetblue')" type="submit">Hotels near by</button>
                 </div>
               </div>
               <div class="col-sm-8 col-md-5 col-lg-3 col-xs-12">
                 <div class="row1colur p-4">
-                    <button class="btn btn-secondary my-2 my-sm-0" onclick="places('options', this, 'cadetblue')" type="submit">Tourist places near by</button>
+                    <button class="btn btn-secondary my-2 my-sm-0" onclick="openPage('places', this, 'cadetblue')" type="submit">Tourist places near by</button>
                 </div>
               </div>
             </div>
           </div>
 
           <div id="weather" class="container tabcontent divPadding">
-            <form id="meteo-form" class="form-inline my-2 my-lg-0">
-                <span id="geolocation" data-balloon="Geolocate me!" data-balloon-pos="down">
-                    <i class="fa fa-crosshairs"></i>
-                </span>
-                <input name="meteo-city" class="form-control mr-sm-2" placeholder="City" type="text">
-                <button class="btn btn-secondary my-2 my-sm-0" onclick="openPage('options', this, 'cadetblue')" type="submit">Search</button>
-            </form>
+            <div class="container">
+              <h2 id="meteo-title">
+                  <span>
+                      Weather in <a href="https://www.google.fr/maps/search/london" class="text-muted meteo-city" target="_blank">London</a>
+                  </span>
+              </h2>
+              <section class="section-meteo row">
+                  <div id="meteo-day-1" class="meteo-day col-sm">
+                      <h3><span class="name">Day 1</span> <span class="text-muted date">--/--</span></h3>
+                      <div class="meteo-block row meteo-temperature-container">
+                          <div class="meteo-temperature">
+                              <i class="wi wi-night-sleet"></i>
+                              <span class="data">--°C</span>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col meteo-block meteo-humidity">
+                              <div class="meteo-block-title">
+                                  <i class="fa fa-tint" aria-hidden="true"></i>
+                                   Humidity
+                              </div>
+                              <div class="meteo-block-data">--%</div>
+                          </div>
+                          <div class="col meteo-block meteo-wind">
+                              <div class="meteo-block-title">
+                                  <i class="fa fa-flag" aria-hidden="true"></i>
+                                  Wind
+                              </div>
+                              <div class="meteo-block-data">-- km/h</div>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col meteo-block meteo-sunrise">
+                              <div class="meteo-block-title">
+                                  <i class="fa fa-sun-o" aria-hidden="true"></i>
+                                  Sunrise
+                              </div>
+                              <div class="meteo-block-data">--:--</div>
+                          </div>
+                          <div class="col meteo-block meteo-sunset">
+                              <div class="meteo-block-title">                      
+                                  <i class="fa fa-sun-o" aria-hidden="true"></i>
+                                  Sunset
+                              </div>
+                              <div class="meteo-block-data">--:--</div>
+                          </div>
+                      </div>
+                  </div>
+                  <div id="meteo-day-2" class="meteo-day col-sm">
+                      <h3><span class="name">Day 2</span> <span class="text-muted date">--/--</span></h3>
+                      <div class="meteo-block row meteo-temperature-container">
+                          <div class="meteo-temperature">
+                              <i class="wi wi-night-sleet"></i>
+                              <span class="data">--°C</span>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col meteo-block meteo-humidity">
+                              <div class="meteo-block-title">
+                                  <i class="fa fa-tint" aria-hidden="true"></i>
+                                   Humidity
+                              </div>
+                              <div class="meteo-block-data">--%</div>
+                          </div>
+                          <div class="col meteo-block meteo-wind">
+                              <div class="meteo-block-title">
+                                  <i class="fa fa-flag" aria-hidden="true"></i>
+                                  Wind
+                              </div>
+                              <div class="meteo-block-data">-- km/h</div>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col meteo-block meteo-sunrise">
+                              <div class="meteo-block-title">
+                                  <i class="fa fa-sun-o" aria-hidden="true"></i>
+                                  Sunrise
+                              </div>
+                              <div class="meteo-block-data">--:--</div>
+                          </div>
+                          <div class="col meteo-block meteo-sunset">
+                              <div class="meteo-block-title">                      
+                                  <i class="fa fa-sun-o" aria-hidden="true"></i>
+                                  Sunset
+                              </div>
+                              <div class="meteo-block-data">--:--</div>
+                          </div>
+                      </div>
+                  </div>
+                  <div id="meteo-day-3" class="meteo-day col-sm">
+                      <h3><span class="name">Day 3</span> <span class="text-muted date">--/--</span></h3>
+                      <div class="meteo-block row meteo-temperature-container">
+                          <div class="meteo-temperature">
+                              <i class="wi wi-night-sleet"></i>
+                              <span class="data">--°C</span>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col meteo-block meteo-humidity">
+                              <div class="meteo-block-title">
+                                  <i class="fa fa-tint" aria-hidden="true"></i>
+                                   Humidity
+                              </div>
+                              <div class="meteo-block-data">--%</div>
+                          </div>
+                          <div class="col meteo-block meteo-wind">
+                              <div class="meteo-block-title">
+                                  <i class="fa fa-flag" aria-hidden="true"></i>
+                                  Wind
+                              </div>
+                              <div class="meteo-block-data">-- km/h</div>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col meteo-block meteo-sunrise">
+                              <div class="meteo-block-title">
+                                  <i class="fa fa-sun-o" aria-hidden="true"></i>
+                                  Sunrise
+                              </div>
+                              <div class="meteo-block-data">--:--</div>
+                          </div>
+                          <div class="col meteo-block meteo-sunset">
+                              <div class="meteo-block-title">                      
+                                  <i class="fa fa-sun-o" aria-hidden="true"></i>
+                                  Sunset
+                              </div>
+                              <div class="meteo-block-data">--:--</div>
+                          </div>
+                      </div>
+                  </div>
+              </section>
           </div>
-
+          </div>
+            
           <div id="places" class="container tabcontent divPadding">
-            <form id="meteo-form" class="form-inline my-2 my-lg-0">
-                <span id="geolocation" data-balloon="Geolocate me!" data-balloon-pos="down">
-                    <i class="fa fa-crosshairs"></i>
-                </span>
-                <input name="meteo-city" class="form-control mr-sm-2" placeholder="City" type="text">
-                <button class="btn btn-secondary my-2 my-sm-0" onclick="openPage('options', this, 'cadetblue')" type="submit">Search</button>
-            </form>
+            
           </div>
 
           <div id="hotels" class="container tabcontent divPadding">
-            <form id="meteo-form" class="form-inline my-2 my-lg-0">
-                <span id="geolocation" data-balloon="Geolocate me!" data-balloon-pos="down">
-                    <i class="fa fa-crosshairs"></i>
-                </span>
-                <input name="meteo-city" class="form-control mr-sm-2" placeholder="City" type="text">
-                <button class="btn btn-secondary my-2 my-sm-0" onclick="openPage('options', this, 'cadetblue')" type="submit">Search</button>
-            </form>
+           
           </div>
 
 
@@ -101,7 +213,7 @@
               
             </div>
           </div>
-
+        
           <form action="mailto:amulya2@pdx.edu" method="post" enctype="text/plain">
             <div id="contact" class="container tabcontent divPadding rounded mp-4">
               <div class="form-group row">
@@ -144,41 +256,6 @@
               </div>
             </div>
           </form>
-    </div>
-
-    <script>
-        function openPage(pageName,elmnt,color) 
-        {
-            var i, tabcontent, tablinks;
-            tabcontent = document.getElementsByClassName("tabcontent");
-            for (i = 0; i < tabcontent.length; i++) 
-            {
-                tabcontent[i].style.display = "none";
-            }
-            tablinks = document.getElementsByClassName("anibutton");
-            for (i = 0; i < tablinks.length; i++) 
-            {
-                tablinks[i].style.backgroundColor = "";
-            }
-            document.getElementById(pageName).style.display = "block";
-            elmnt.style.backgroundColor = color;
-        }
-    
-          document.getElementById("defaultOpen").click();
-    
-        function myFunction() 
-        {
-            var x = document.getElementById("myTopnav");
-            if (x.className === "topnav") 
-            {
-                x.className += " responsive";
-            } 
-            else 
-            {
-                x.className = "topnav";
-            }
-        }   
-    </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment-with-locales.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/suncalc/1.8.0/suncalc.min.js"></script>
