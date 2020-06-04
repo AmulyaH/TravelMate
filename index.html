@@ -16,6 +16,8 @@
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/balloon-css/0.5.0/balloon.min.css">
     
     <script src="https://use.fontawesome.com/389802374e.js"></script>
     <title>TravelMate</title>
@@ -25,23 +27,29 @@
 
   <body>
     <div id="myTopnav" class="topnav p-2">
-        <button id="defaultOpen" class="anibutton tabbutton" onclick="openPage('home', this, 'cadetblue')"> <i class="fa fa-home fa-lg"></i> </button>
-        <button class="anibutton tabbutton font-weight-bolder" onclick="openPage('about', this, 'cadetblue')"> About </button>
-        <button class="anibutton tabbutton font-weight-bolder" onclick="openPage('contact', this, 'cadetblue')"> Contact </button>
+        <button id="defaultOpen" class="anibutton tabbutton" onclick="openPageNav('home', this, 'cadetblue')"> <i class="fa fa-home fa-lg"></i> </button>
+        <button class="anibutton tabbutton font-weight-bolder" onclick="openPageNav('about', this, 'cadetblue')"> About </button>
+        <button class="anibutton tabbutton font-weight-bolder" onclick="openPageNav('contact', this, 'cadetblue')"> Contact </button>
         <a href="javascript:void(0);"  class="icon font-weight-bolder" onclick="myFunction()"><i class="fa fa-bars fa-2x"></i></a>
     </div>
 
         <div id="home" class="container tabcontent divPadding">
-            <form id="meteo-form" class="form-inline my-2 my-lg-0">
+            <form id="meteo-form" class="form-inline my-2 my-lg-0" onsubmit="saveForm()">
                 <span id="geolocation" data-balloon="Geolocate me!" data-balloon-pos="down">
                     <i class="fa fa-crosshairs"></i>
                 </span>
-                <input name="meteo-city" class="form-control mr-sm-2" placeholder="City" type="text">
-                <button class="btn btn-secondary my-2 my-sm-0" onclick="openPage('options', this, 'cadetblue')" type="submit">Search</button> 
+                <input name="meteo-city" id="city" class="form-control mr-sm-2" placeholder="City" required type="text">
+                <p id="requiredCity" style="display: none;">please enter a city name</p>
+                <h2 id="city-title" style="display: none;">
+                  <span>
+                      city <h6 id="cityNotFoind"> </h6> not found
+                  </span>
+                </h2>
+                <input type="submit" id="btnSubmit" class="btn btn-secondary my-2 my-sm-0" value="Submit" onclick="openPage('options', this, 'cadetblue')">
             </form>
           </div>
 
-          <div id="options" class="container-fluid tabcontent divPadding">
+          <div id="options" class="container-fluid tabcontent divPadding" style="display: none;">
             <div class="row">
               <div class="col-sm-8 col-md-5 col-lg-3 col-xs-12 offset-lg-1">
                 <div class="row1colur p-4">
@@ -61,7 +69,7 @@
             </div>
           </div>
 
-          <div id="weather" class="container tabcontent divPadding">
+          <div id="weather" class="container tabcontent divPadding" style="display: none;">
               <h2 id="meteo-title">
                   <span>
                       Weather in <a href="https://www.google.fr/maps/search/london" class="text-muted meteo-city" target="_blank">London</a>

@@ -6,27 +6,69 @@ var javascriptGoogleAPIKey = "AIzaSyCVycAqj-TNg29EHhT1rFd9gxNmBF9tMKQ" ;
 
 var OpenweatherAPI = "06d6ba56c4f8e2f08f38c52fd8224fb6";
 
+var city = document.getElementById("city");
 
 function saveForm(){
+
+    var city = document.getElementById("city");
+    var requiredCity = document.getElementById("requiredCity")
+
+    if(!city.value)
+    {
+        requiredCity.style.display = "block";
+    }
+    else{
+        requiredCity.style.display = "none";
+    }
     
 }
 
+
+
 function openPage(pageName,elmnt,color) 
 {
-    var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) 
+    if(city.value)
     {
-        tabcontent[i].style.display = "none";
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) 
+        {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("anibutton");
+        for (i = 0; i < tablinks.length; i++) 
+        {
+            tablinks[i].style.backgroundColor = "";
+        }
+        document.getElementById(pageName).style.display = "block";
+        elmnt.style.backgroundColor = color;
     }
-    tablinks = document.getElementsByClassName("anibutton");
-    for (i = 0; i < tablinks.length; i++) 
+    else
     {
-        tablinks[i].style.backgroundColor = "";
+        document.getElementById(pageName).style.display = "none";
     }
-    document.getElementById(pageName).style.display = "block";
-    elmnt.style.backgroundColor = color;
+   
+}
 
+function openPageNav(pageName,elmnt,color) 
+{
+    if(city.value)
+    {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) 
+        {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("anibutton");
+        for (i = 0; i < tablinks.length; i++) 
+        {
+            tablinks[i].style.backgroundColor = "";
+        }
+        document.getElementById(pageName).style.display = "block";
+        elmnt.style.backgroundColor = color;
+    }
+   
 }
 
 document.getElementById("defaultOpen").click();
