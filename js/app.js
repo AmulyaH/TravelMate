@@ -1,12 +1,9 @@
 
-var API_KEY = "6841e5450643e5d4ff59981dbf58944e";
-
-
-var javascriptGoogleAPIKey = "AIzaSyCVycAqj-TNg29EHhT1rFd9gxNmBF9tMKQ" ; 
 
 var OpenweatherAPI = "06d6ba56c4f8e2f08f38c52fd8224fb6";
 
 var city = document.getElementById("city");
+var show = false;
 
 function saveForm(){
 
@@ -16,9 +13,11 @@ function saveForm(){
     if(!city.value)
     {
         requiredCity.style.display = "block";
+        show = false; 
     }
     else{
         requiredCity.style.display = "none";
+        show = true;
     }
     
 }
@@ -27,7 +26,7 @@ function saveForm(){
 
 function openPage(pageName,elmnt,color) 
 {
-    if(city.value)
+    if(show)
     {
         var i, tabcontent, tablinks;
         tabcontent = document.getElementsByClassName("tabcontent");
@@ -52,7 +51,7 @@ function openPage(pageName,elmnt,color)
 
 function openPageNav(pageName,elmnt,color) 
 {
-    if(city.value)
+    //if(city.value)
     {
         var i, tabcontent, tablinks;
         tabcontent = document.getElementsByClassName("tabcontent");
@@ -169,6 +168,7 @@ $("#meteo-form").submit(function (event) {
 });
 
 $("#geolocation").click(function (event) {
+    show = true;
     navigator.geolocation.getCurrentPosition(function (position) {
         // Loading...
         loading = $('#search-loading');
@@ -230,6 +230,7 @@ function displayMeteo(data){
     $('#meteo-title span').html('Weather in <a href="' + googleMapCity + '" class="text-muted meteo-city" target="_blank">' + data.city.name + ', ' + data.city.country + '</a>');
     // Update meteo for each day
     var tempMoyenne = 0;
+    //city = data.city.name;
     for (var i = 0; i < 3; i++){
         // Get meteo
         meteo = data.list[i*8];
@@ -246,11 +247,9 @@ function displayMeteo(data){
         sunrise = day.find(".meteo-sunrise .meteo-block-data");
         sunset = day.find(".meteo-sunset .meteo-block-data");
 
-        //var sunmeteo = data.list[i*]
         // Update DOM
         code = meteo.weather[0].id;
 
-        //icon[0].attributes[1].value = "http://openweathermap.org/img/wn/" + code + "@2x.png";
         icon.attr('class', 'wi wi-owm-' + code);
         weatherDescription.text(meteo.weather[0].description);
         temperature.text(meteo.main.temp+ "°F");

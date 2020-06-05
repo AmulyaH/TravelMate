@@ -36,7 +36,7 @@
         <div id="home" class="container tabcontent divPadding">
             <form id="meteo-form" class="form-inline my-2 my-lg-0" onsubmit="saveForm()">
                 <span id="geolocation" data-balloon="Geolocate me!" data-balloon-pos="down">
-                    <i class="fa fa-crosshairs"></i>
+                    <i class="fa fa-crosshairs" onclick="openPage('options', this, 'cadetblue')"></i>
                 </span>
                 <input name="meteo-city" id="city" class="form-control mr-sm-2" placeholder="City" required type="text">
                 <p id="requiredCity" style="display: none;">please enter a city name</p>
@@ -69,21 +69,18 @@
           <div id="weather" class="container tabcontent divPadding" style="display: none;">
               <h2 id="meteo-title">
                   <span>
-                    
                       Weather in <a href="https://www.google.fr/maps/search/london" class="text-muted meteo-city" target="_blank">London</a>
                   </span>
               </h2>
               <div class="section-meteo row">
                   <div id="meteo-day-1" class="meteo-day col-sm">
-                   
                       <h3><span class="name">Day 1</span> <span class="text-muted date">--/--</span></h3>
-                    
                       <div class="meteo-block row meteo-temperature-container">
                         <div class="col">
                           <span class="cloudicon"><i class="wi wi-night-sleet "></i></span>  <span class="weatherDescription meteo-block-data"></span> 
                         </div>
                       </div>
-
+                      <br>
                       <div class="row">
                         <div class="col meteo-block">
                             <div class="meteo-block-title">
@@ -154,7 +151,7 @@
                           <span class="cloudicon"><i class="wi wi-night-sleet "></i></span>  <span class="weatherDescription meteo-block-data"></span> 
                         </div>
                       </div>
-
+                      <br>
                       <div class="row">
                         <div class="col meteo-block">
                             <div class="meteo-block-title">
@@ -224,7 +221,7 @@
                           <span class="cloudicon"><i class="wi wi-night-sleet "></i></span>  <span class="weatherDescription meteo-block-data"></span> 
                         </div>
                       </div>
-
+                      <br>
                       <div class="row">
                         <div class="col meteo-block">
                             <div class="meteo-block-title">
@@ -254,7 +251,7 @@
                             <div class="maxTemp meteo-block-data">--°F</div>
                         </div>
                        </div>
-                       
+
                       <div class="row">
                           <div class="col meteo-block meteo-humidity">
                               <div class="meteo-block-title">
