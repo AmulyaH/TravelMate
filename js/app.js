@@ -144,6 +144,8 @@ $(document).ready(function(){
 
     getMeteoByCity(city, function (data, error) {
         if (error == null) {
+            cityLat = data.city.coord.lat;
+            cityLong = data.city.coord.lon;
             city = data.city.name;
             country = data.city.country
             displayMeteo(data);
@@ -166,11 +168,21 @@ $(document).ready(function(){
 
     getTop5Rest(cityID, function (data, error) {
         if (error == null) {
-            displayRest(data, city, country, cityLat, cityLong);;
+            //displayRest(data);;
         }
         else {
             restTitle = $('#rest-title span');
             restTitle.html('CityID <span class="text-muted">' + city + '</span> not found');
+        }
+    });
+
+    getPlacesByCity(city, cityLat, cityLong, function (traveldata, error){
+        if (error == null) {
+            displayPlacesData(traveldata, city, country, cityLat, cityLong);
+        }
+        else {
+            meteoTitle = $('#meteo-title span');
+            meteoTitle.html('City <span class="text-muted">' + city + '</span> not found');
         }
     });
 });
@@ -270,7 +282,7 @@ $("#meteo-form").submit(function (event) {
 
     getTop5Rest(cityID, function (data, error) {
         if (error == null) {
-            displayRest(data, city, country, cityLat, cityLong);
+            displayRest(data);
         }
         else {
             restTitle = $('#rest-title span');
@@ -304,8 +316,6 @@ $("#geolocation").click(function (event) {
         // Get and update meteo
         getMeteoByCoordinates(lat, lon, function (data, error) {
             if (error == null) {
-                city = data.city.name;
-                //cityLong = data.city.coord.lon;
                 displayMeteo(data);
             }
             else {
@@ -318,9 +328,9 @@ $("#geolocation").click(function (event) {
             }, 500);
         });
 
-        getPlacesByCity(city, lat, lon, function (traveldata, error){
+        getPlacesByCity(city, cityLat, cityLong, function (traveldata, error){
             if (error == null) {
-                displayPlacesData(traveldata, city, country, lat, lon);
+                displayPlacesData(traveldata, city, country, cityLat, cityLong);
             }
             else {
                 meteoTitle = $('#places-title span');
@@ -397,24 +407,11 @@ function displayMeteo(data){
         tempMoyenne += meteo.main.temp;
     }
     displaySunriseSunset(data.city.coord.lat, data.city.coord.lon);
-    // Get custom gradient according to the temperature
-   /*  tempMoyenne = toCelsius(tempMoyenne / 3);
-    var hue1 = 30 + 240 * (30 - tempMoyenne) / 60;
-    var hue2 = hue1 + 30;
-    rgb1 = 'rgb(' + hslToRgb(hue1 / 360, 0.6, 0.5).join(',') + ')';
-    rgb2 = 'rgb(' + hslToRgb(hue2 / 360, 0.6, 0.5).join(',') + ')';
-    $('body').css('background', 'linear-gradient(' + rgb1 + ',' + rgb2 + ')'); */
 }
 
 function displayRest(data, city, country, cityLat, cityLong){
     googleMapCity = "https://www.google.fr/maps/place/" + cityLat + "," + cityLong;
     $('#rest-title span').html('Restaurants in <a href="' + googleMapCity + '" class="text-muted meteo-city" target="_blank">' + city + ', ' + country + '</a>');
-    console.log("Number of restaurants:", data.restaurants.length)
-    console.log("Restaurant#1 Name:",data.restaurants[0].restaurant.name);
-    console.log("Restaurant#1 URL:",data.restaurants[0].restaurant.url);
-    console.log("Restaurant#1 Adress:",data.restaurants[0].restaurant.location.address);
-    console.log("Restaurant#1 Cuisine:",data.restaurants[0].restaurant.cuisines);
-    console.log("Restaurant#1 Rating:",data.restaurants[0].restaurant.user_rating.aggregate_rating);
 
     for(var i = 0; i < data.restaurants.length; i++)
      {
@@ -433,7 +430,6 @@ function displayRest(data, city, country, cityLat, cityLong){
         restCuisine.text('Cuisine: '+restaurant.cuisines);
         restRating.text('Rating: '+ restaurant.user_rating.aggregate_rating);
         restURL.attr('href', restaurant.url)
-        innerplaceName.text(place.name);
         
      }
 } 
@@ -450,12 +446,7 @@ function displayPlacesData(data, city,country, cityLat, cityLong){
 
         placehtml = $("#place" + (i + 1));
         placeName = placehtml.find(".placeName");
-        //innerplaceName = placehtml.find(".innerplaceName ");
-        //score = placehtml.find(".scoreNumber");
-        mapmarker = placehtml.find(".mapmarker");
-        //snippet = placehtml.find(".snippet");
-        //facebook = placehtml.find(".facebook");
-        //streetView = placehtml.find(".streetView");
+        innerplaceName = placehtml.find(".innerplaceName ");
 
         address = placehtml.find(".address");
         distance = placehtml.find(".distance");
@@ -465,16 +456,9 @@ function displayPlacesData(data, city,country, cityLat, cityLong){
         googleMapPlace = "https://www.google.fr/maps/place/" + coordinates.lat + "," + coordinates.lng;
 
         placeName.text(place.title);
-        //innerplaceName.text(place.title);
-        //innerplaceName.attr('href', attribution[2].url);
-        address.text(place.address.label);
-        //var distanceInMiles = place.distance * 0.00062137;
-        distance.text("Distance : " + (place.distance * 0.00062137).toFixed(2) + " miles");
+        address.text(place.address.lable);
+        distance.text("Distance : " + place.distance * 0.00062137 + " miles");
         mapmarker.attr('href', googleMapPlace);
-        //score.text(place.score.toFixed(2));
-        //snippet.text(place.snippet);
-        //facebook.attr('href', attribution[0].url);
-        //streetView.attr('href', attribution[1].url);
      }
 }
 
