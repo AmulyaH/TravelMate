@@ -176,15 +176,6 @@ $(document).ready(function(){
         }
     });
 
-    getPlacesByCity(city, cityLat, cityLong, function (traveldata, error){
-        if (error == null) {
-            displayPlacesData(traveldata, city, country, cityLat, cityLong);
-        }
-        else {
-            meteoTitle = $('#meteo-title span');
-            meteoTitle.html('City <span class="text-muted">' + city + '</span> not found');
-        }
-    });
 });
 
 function getMeteoByCity(city, callback)
@@ -316,6 +307,10 @@ $("#geolocation").click(function (event) {
         // Get and update meteo
         getMeteoByCoordinates(lat, lon, function (data, error) {
             if (error == null) {
+                cityLat = data.city.coord.lat;
+                cityLong = data.city.coord.lon;
+                city = data.city.name;
+                country = data.city.country;
                 displayMeteo(data);
             }
             else {
@@ -447,6 +442,7 @@ function displayPlacesData(data, city,country, cityLat, cityLong){
         placehtml = $("#place" + (i + 1));
         placeName = placehtml.find(".placeName");
         innerplaceName = placehtml.find(".innerplaceName ");
+        mapmarker = placehtml.find(".mapmarker");
 
         address = placehtml.find(".address");
         distance = placehtml.find(".distance");
@@ -456,8 +452,8 @@ function displayPlacesData(data, city,country, cityLat, cityLong){
         googleMapPlace = "https://www.google.fr/maps/place/" + coordinates.lat + "," + coordinates.lng;
 
         placeName.text(place.title);
-        address.text(place.address.lable);
-        distance.text("Distance : " + place.distance * 0.00062137 + " miles");
+        address.text(place.address.label);
+        distance.text("Distance : " + (place.distance * 0.00062137).toFixed(2) + " miles");
         mapmarker.attr('href', googleMapPlace);
      }
 }
