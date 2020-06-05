@@ -166,7 +166,7 @@ $(document).ready(function(){
 
     getTop5Rest(cityID, function (data, error) {
         if (error == null) {
-            //displayRest(data);;
+            displayRest(data, city, country, cityLat, cityLong);;
         }
         else {
             restTitle = $('#rest-title span');
@@ -270,7 +270,7 @@ $("#meteo-form").submit(function (event) {
 
     getTop5Rest(cityID, function (data, error) {
         if (error == null) {
-            displayRest(data);
+            displayRest(data, city, country, cityLat, cityLong);
         }
         else {
             restTitle = $('#rest-title span');
@@ -406,15 +406,37 @@ function displayMeteo(data){
     $('body').css('background', 'linear-gradient(' + rgb1 + ',' + rgb2 + ')'); */
 }
 
-/* function displayPlacesData(data, city,country, cityLat, cityLong){
+function displayRest(data, city, country, cityLat, cityLong){
     googleMapCity = "https://www.google.fr/maps/place/" + cityLat + "," + cityLong;
     $('#rest-title span').html('Restaurants in <a href="' + googleMapCity + '" class="text-muted meteo-city" target="_blank">' + city + ', ' + country + '</a>');
+    console.log("Number of restaurants:", data.restaurants.length)
     console.log("Restaurant#1 Name:",data.restaurants[0].restaurant.name);
     console.log("Restaurant#1 URL:",data.restaurants[0].restaurant.url);
     console.log("Restaurant#1 Adress:",data.restaurants[0].restaurant.location.address);
     console.log("Restaurant#1 Cuisine:",data.restaurants[0].restaurant.cuisines);
     console.log("Restaurant#1 Rating:",data.restaurants[0].restaurant.user_rating.aggregate_rating);
-} */
+
+    for(var i = 0; i < data.restaurants.length; i++)
+     {
+        restaurant = data.restaurants[i].restaurant;
+        restCard = $("#card" + (i + 1));
+        restName =  restCard.find(".rest-name");
+        restAddress =  restCard.find(".rest-address");
+        restCuisine = restCard.find(".rest-cuisine");
+        restRating = restCard.find(".rest-rating")
+        restURL = restCard.find(".rest-url")
+        restimg = restCard.find(".rest-img");
+
+        restName.text(restaurant.name);
+        restimg.attr('src', restaurant.featured_image);
+        restAddress.text(restaurant.location.address);
+        restCuisine.text('Cuisine: '+restaurant.cuisines);
+        restRating.text('Rating: '+ restaurant.user_rating.aggregate_rating);
+        restURL.attr('href', restaurant.url)
+        innerplaceName.text(place.name);
+        
+     }
+} 
 
 function displayPlacesData(data, city,country, cityLat, cityLong){
      // Update Google Map URL
