@@ -235,18 +235,29 @@ function displayMeteo(data){
         meteo = data.list[i*8];
         // Get DOM elements
         day = $("#meteo-day-" + (i + 1));
-        icon = day.find(".meteo-temperature .wi");
-        temperature = day.find(".meteo-temperature .data");
+        icon = day.find(".wi");
+        weatherDescription = day.find(".weatherDescription")
+        feelstemperature = day.find(".feelsTemp");
+        mintemperature = day.find(".minTemp");
+        maxtemperature = day.find(".maxTemp");
         humidity = day.find(".meteo-humidity .meteo-block-data");
         wind = day.find(".meteo-wind .meteo-block-data");
         sunrise = day.find(".meteo-sunrise .meteo-block-data");
         sunset = day.find(".meteo-sunset .meteo-block-data");
+
+        //var sunmeteo = data.list[i*]
         // Update DOM
         code = meteo.weather[0].id;
+
+        //icon[0].attributes[1].value = "http://openweathermap.org/img/wn/" + code + "@2x.png";
         icon.attr('class', 'wi wi-owm-' + code);
-        temperature.text(meteo.main.temp+ "°F");
+        weatherDescription.text(meteo.weather[0].description);
+        feelstemperature.text(meteo.main.feels_like+ "°F");
+        mintemperature.text(meteo.main.temp_min+ "°F");
+        maxtemperature.text(meteo.main.temp_max+ "°F");
         humidity.text(meteo.main.humidity + "%");
         wind.text(meteo.wind.speed + " km/h");
+        sunrise
         tempMoyenne += meteo.main.temp;
     }
     displaySunriseSunset(data.city.coord.lat, data.city.coord.lon);
