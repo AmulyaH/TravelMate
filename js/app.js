@@ -144,6 +144,16 @@ $(document).ready(function(){
         }
     });
 
+    getTop5Rest(cityID, function (data, error) {
+        if (error == null) {
+            displayRest(data);;
+        }
+        else {
+            restTitle = $('#rest-title span');
+            restTitle.html('City <span class="text-muted">' + city + '</span> not found');
+        }
+    });
+
     getPlacesByCity(city, function (traveldata, error){
         if (error == null) {
             displayPlacesData(traveldata);
@@ -153,8 +163,6 @@ $(document).ready(function(){
             meteoTitle.html('City <span class="text-muted">' + city + '</span> not found');
         }
     });
-
-
 });
 
 function getMeteoByCity(city, callback)
@@ -174,6 +182,19 @@ function getRestCityId(city, callback){
     $.ajax({
         headers: {'user-key' : zomatoAPI},
         url: "https://developers.zomato.com/api/v2.1/cities?q=" + city,
+        success: function(data){
+            callback(data, null);
+        },
+        error: function(req, status, error){
+            callback(null, error);
+        }
+    });
+}
+
+function getTop5Rest(cityID, callback){
+    $.ajax({
+        headers: {'user-key' : zomatoAPI},
+        url:  'https://developers.zomato.com/api/v2.1/search?entity_id='+cityID+'&entity_type=city&count=5&sort=rating&order=desc',
         success: function(data){
             callback(data, null);
         },
@@ -215,6 +236,16 @@ $("#meteo-form").submit(function (event) {
     getRestCityId(city, function (data, error) {
         if (error == null) {
             cityID = cityID = data.location_suggestions[0].id;
+        }
+        else {
+            restTitle = $('#rest-title span');
+            restTitle.html('City <span class="text-muted">' + city + '</span> not found');
+        }
+    });
+
+    getTop5Rest(cityID, function (data, error) {
+        if (error == null) {
+            displayRest(data);
         }
         else {
             restTitle = $('#rest-title span');
@@ -354,6 +385,7 @@ function displayRest(data){
     //$('#rest-title span').html('Stat:');
     //sampleDiv = $('#rest-data');
     //sampleDiv.html(data);
+    console.log("Restaurant#1 Name:",data.restaurants[2].restaurant.name);
 }
 
 function displayPlacesData(data){
