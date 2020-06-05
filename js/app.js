@@ -2,9 +2,16 @@ var zomatoAPI = "44f2ef10b109462372c1dadf31aadc51";
 
 var OpenweatherAPI = "06d6ba56c4f8e2f08f38c52fd8224fb6";
 
+var travelAPIKey = "re1hisqd696bhfquhxpifv5uzzr2agih";
+
+var travelAccountId = "5SZH7AXJ"
+
 var city = document.getElementById("city");
 var show = false;
 var cityID = 0;
+
+
+
 
 function saveForm(){
 
@@ -125,13 +132,8 @@ $(document).ready(function(){
             meteoTitle = $('#meteo-title span');
             meteoTitle.html('City <span class="text-muted">' + city + '</span> not found');
         }
-        // Stop loader
-        //setTimeout(function () {
-        //    loading.attr('class', 'loading')
-        //}, 500);
     });
 
-    //
     getRestCityId(city, function (data, error) {
         if (error == null) {
             cityID = cityID = data.location_suggestions[0].id;
@@ -140,14 +142,23 @@ $(document).ready(function(){
             restTitle = $('#rest-title span');
             restTitle.html('City <span class="text-muted">' + city + '</span> not found');
         }
-        // Stop loader
-        setTimeout(function () {
-            loading.attr('class', 'loading')
-        }, 500);
     });
+
+    getPlacesByCity(city, function (traveldata, error){
+        if (error == null) {
+            displayPlacesData(traveldata);
+        }
+        else {
+            meteoTitle = $('#meteo-title span');
+            meteoTitle.html('City <span class="text-muted">' + city + '</span> not found');
+        }
+    });
+
+
 });
 
-function getMeteoByCity(city, callback){
+function getMeteoByCity(city, callback)
+{
     $.ajax({
         url: "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&APPID=" + OpenweatherAPI,
         success: function(data){
@@ -172,6 +183,18 @@ function getRestCityId(city, callback){
     });
 }
 
+function getPlacesByCity(city, callback){
+    $.ajax({
+        url: "https://www.triposo.com/api/20200405/poi.json?location_id=" + city + "&account=" + travelAccountId + "&&token=" + travelAPIKey,
+        success: function(data){
+            callback(data, null);
+        },
+        error: function(req, status, error){
+            callback(null, error);
+        }
+    });
+}
+
 // -- Core --
 $("#meteo-form").submit(function (event) {
     // Loading...
@@ -187,10 +210,6 @@ $("#meteo-form").submit(function (event) {
             meteoTitle = $('#meteo-title span');
             meteoTitle.html('City <span class="text-muted">' + city + '</span> not found');
         }
-        // Stop loader
-        setTimeout(function () {
-            loading.attr('class', 'loading')
-        }, 500);
     });
 
     getRestCityId(city, function (data, error) {
@@ -201,11 +220,18 @@ $("#meteo-form").submit(function (event) {
             restTitle = $('#rest-title span');
             restTitle.html('City <span class="text-muted">' + city + '</span> not found');
         }
-        // Stop loader
-        setTimeout(function () {
-            loading.attr('class', 'loading')
-        }, 500);
     });
+    
+    getPlacesByCity(city, function (traveldata, error){
+        if (error == null) {
+            displayPlacesData(traveldata);
+        }
+        else {
+            meteoTitle = $('#meteo-title span');
+            meteoTitle.html('City <span class="text-muted">' + city + '</span> not found');
+        }
+    });
+
     // Don't refresh the page
     return false;
 });
@@ -233,10 +259,18 @@ $("#geolocation").click(function (event) {
                 loading.attr('class', 'loading')
             }, 500);
         });
+
+        getPlacesByCity(city, function (traveldata, error){
+            if (error == null) {
+                displayPlacesData(traveldata);
+            }
+            else {
+                meteoTitle = $('#meteo-title span');
+                meteoTitle.html('City <span class="text-muted">' + city + '</span> not found');
+            }
+        });
     });
 });
-
-
 
 function getMeteoByCoordinates(lat, lon, callback){
     $.ajax({
@@ -306,14 +340,13 @@ function displayMeteo(data){
     }
     displaySunriseSunset(data.city.coord.lat, data.city.coord.lon);
     // Get custom gradient according to the temperature
-    tempMoyenne = toCelsius(tempMoyenne / 3);
+   /*  tempMoyenne = toCelsius(tempMoyenne / 3);
     var hue1 = 30 + 240 * (30 - tempMoyenne) / 60;
     var hue2 = hue1 + 30;
     rgb1 = 'rgb(' + hslToRgb(hue1 / 360, 0.6, 0.5).join(',') + ')';
     rgb2 = 'rgb(' + hslToRgb(hue2 / 360, 0.6, 0.5).join(',') + ')';
-    $('body').css('background', 'linear-gradient(' + rgb1 + ',' + rgb2 + ')');
+    $('body').css('background', 'linear-gradient(' + rgb1 + ',' + rgb2 + ')'); */
 }
-
 
 function displayRest(data){
     //googleMapCity = "https://www.google.fr/maps/place/" + data.city.coord.lat + "," + data.city.coord.lon;
@@ -322,3 +355,15 @@ function displayRest(data){
     //sampleDiv = $('#rest-data');
     //sampleDiv.html(data);
 }
+
+function displayPlacesData(data){
+     // Update Google Map URL
+     googleMapCity = "https://www.google.fr/maps/place/" + data.city.coord.lat + "," + data.city.coord.lon;
+     $('#places-title span').html('Top 10 Point Of Attractions in<a href="' + googleMapCity + '" class="text-muted meteo-city" target="_blank">' + data.city.name + ', ' + data.city.country + '</a>');
+
+
+}
+
+
+
+
