@@ -390,10 +390,7 @@ function displayMeteo(data){
 function displayRest(data){
     googleMapCity = "https://www.google.fr/maps/place/" + cityLat + "," + cityLong;
     $('#rest-title span').html('Restaurants in <a href="' + googleMapCity + '" class="text-muted meteo-city" target="_blank">' + city + ', ' + country + '</a>');
-    //$('#rest-title span').html('Stat:');
-    //sampleDiv = $('#rest-data');
-    //sampleDiv.html(data);
-    console.log("Restaurant#1 Name:",data.restaurants[2].restaurant.name);
+    console.log("Restaurant#1 Name:",data.restaurants[0].restaurant.name);
 }
 
 function displayPlacesData(data){
