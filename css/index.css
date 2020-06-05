@@ -306,3 +306,17 @@ h2 a:hover{
   margin-top: 25px;
   color: #111;
 }
+
+.rest-container {
+  text-align: center;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+.card-body {
+  text-align: center;
+}
+.card{
+  display: inline-block;
+  text-align: center
+}
