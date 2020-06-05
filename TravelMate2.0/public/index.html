@@ -61,7 +61,7 @@
               </div>
               <div class="col-sm-8 col-md-5 col-lg-3 col-xs-12">
                 <div class="row1colur p-4">
-                    <button class="btn btn-secondary my-2 my-sm-0" onclick="openPage('placesToVisit', this, 'cadetblue')" type="submit">Tourist places near by</button>
+                    <button class="btn btn-secondary my-2 my-sm-0" onclick="openPage('places', this, 'cadetblue')" type="submit">Tourist places near by</button>
                 </div>
               </div>
             </div>
@@ -289,7 +289,7 @@
                 </div>
           </div>
 
-          <div id="placesToVisit" class="container tabcontent divPadding">
+          <div id="places" class="container tabcontent divPadding">
           
             <h2 id="places-title">
               <span>
@@ -297,428 +297,160 @@
               </span>
             </h2>
             <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-              <div class="panel panel-default" id="place1">
-                <div class="panel-heading" role="tab" id="heading1">
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingOne">
                   <h4 class="panel-title">
-                    <a role="button" data-toggle="collapse" class="placeName" data-parent="#accordion" href="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                       Collapsible Group Item #1
                     </a>
                   </h4>
                 </div>
-                <div id="collapse1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading1">
-                  <div class="row panel-body">
-                    <div class="col">
-                      <a href="" class="place-city innerplaceName" target="_blank">Place Name</a>
-                    </div>
-                    <div class="col scoreNumber textFont">
-                      Score#
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col offset-sm-2">
-                      <a href="" class="place-city mapmarker iconLink" target="_blank"><i class="fa fa-map-marker" aria-hidden="true"></i></a>
-                    </div>
-                    <div class="col">
-                      <a href="" class="place-city facebook iconLink" target="_blank"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
-                    </div>
-                    <div class="col">
-                      <a href="" class="place-city streetView iconLink" target="_blank"><i class="fa fa-street-view" aria-hidden="true"></i></a>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col snippet textFont">
-                      Snippet
-                    </div>
+                <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                  <div class="panel-body">
+                    Anim 
                   </div>
                 </div>
               </div>
-              <div class="panel panel-default" id="place2">
-                <div class="panel-heading" role="tab" id="heading2">
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingTwo">
                   <h4 class="panel-title">
-                    <a role="button" data-toggle="collapse" class="placeName" data-parent="#accordion" href="#collapse2" aria-expanded="true" aria-controls="collapse2">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                       Collapsible Group Item #2
                     </a>
                   </h4>
                 </div>
-                <div id="collapse2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading2">
-                  <div class="row panel-body">
-                    <div class="col">
-                      <a href="" class="text-muted place-city innerplaceName" target="_blank">Place Name</a>
-                    </div>
-                    <div class="col scoreName">
-                      Score :
-                    </div>
-                    <div class="col scoreNumber">
-                      Score#
-                    </div>
-                    <div class="col">
-                      <a href="" class="mapmarker text-muted place-city" target="_blank"><i class="fa fa-map-marker" aria-hidden="true" style="font-size:48px;color:red"></i></a>
-                    </div>
-                  </div>
-                  <div class="row ">
-                    <div class="col snippet">
-                      Snippet
-                    </div>
-                    <div class="col">
-                      <a href="" class="text-muted place-city facebook" target="_blank"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
-                    </div>
-                    <div class="col">
-                      <a href="" class="text-muted place-city streetView" target="_blank"><i class="fa fa-street-view" aria-hidden="true"></i></a>
-                    </div>
+                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                  <div class="panel-body">
+                    Anim hjgjhgfhgjfgfgf
                   </div>
                 </div>
               </div>
-              <div class="panel panel-default" id="place3">
-                <div class="panel-heading" role="tab" id="heading3">
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingThree">
                   <h4 class="panel-title">
-                    <a role="button" data-toggle="collapse" class="placeName" data-parent="#accordion" href="#collapse3" aria-expanded="true" aria-controls="collapse3">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                       Collapsible Group Item #3
                     </a>
                   </h4>
                 </div>
-                <div id="collapse3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading3">
-                  <div class="row panel-body">
-                    <div class="col">
-                      <a href="" class="text-muted place-city innerplaceName" target="_blank">Place Name</a>
-                    </div>
-                    <div class="col scoreName">
-                      Score :
-                    </div>
-                    <div class="col scoreNumber">
-                      Score#
-                    </div>
-                    <div class="col">
-                      <a href="" class="mapmarker text-muted place-city" target="_blank"><i class="fa fa-map-marker" aria-hidden="true" style="font-size:48px;color:red"></i></a>
-                    </div>
-                  </div>
-                  <div class="row ">
-                    <div class="col snippet">
-                      Snippet
-                    </div>
-                    <div class="col">
-                      <a href="" class="text-muted place-city facebook" target="_blank"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
-                    </div>
-                    <div class="col">
-                      <a href="" class="text-muted place-city streetView" target="_blank"><i class="fa fa-street-view" aria-hidden="true"></i></a>
-                    </div>
+                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                  <div class="panel-body">
+                    Anim 
                   </div>
                 </div>
               </div>
-              <div class="panel panel-default" id="place4">
-                <div class="panel-heading" role="tab" id="heading4">
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingFour">
                   <h4 class="panel-title">
-                    <a role="button" data-toggle="collapse" class="placeName" data-parent="#accordion" href="#collapse4" aria-expanded="true" aria-controls="collapse4">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="true" aria-controls="collapseOne">
                       Collapsible Group Item #4
                     </a>
                   </h4>
                 </div>
-                <div id="collapse4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading4">
-                  <div class="row panel-body">
-                    <div class="col">
-                      <a href="" class="text-muted place-city innerplaceName" target="_blank">Place Name</a>
-                    </div>
-                    <div class="col scoreName">
-                      Score :
-                    </div>
-                    <div class="col scoreNumber">
-                      Score#
-                    </div>
-                    <div class="col">
-                      <a href="" class="mapmarker text-muted place-city" target="_blank"><i class="fa fa-map-marker" aria-hidden="true" style="font-size:48px;color:red"></i></a>
-                    </div>
-                  </div>
-                  <div class="row ">
-                    <div class="col snippet">
-                      Snippet
-                    </div>
-                    <div class="col">
-                      <a href="" class="text-muted place-city facebook" target="_blank"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
-                    </div>
-                    <div class="col">
-                      <a href="" class="text-muted place-city streetView" target="_blank"><i class="fa fa-street-view" aria-hidden="true"></i></a>
-                    </div>
+                <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                  <div class="panel-body">
+                    Anim 
                   </div>
                 </div>
               </div>
-              <div class="panel panel-default" id="place5">
-                <div class="panel-heading" role="tab" id="heading5">
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingFive">
                   <h4 class="panel-title">
-                    <a role="button" data-toggle="collapse" class="placeName" data-parent="#accordion" href="#collapse5" aria-expanded="true" aria-controls="collapse5">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="true" aria-controls="collapseOne">
                       Collapsible Group Item #5
                     </a>
                   </h4>
                 </div>
-                <div id="collapse5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading5">
-                  <div class="row panel-body">
-                    <div class="col">
-                      <a href="" class="text-muted place-city innerplaceName" target="_blank">Place Name</a>
-                    </div>
-                    <div class="col scoreName">
-                      Score :
-                    </div>
-                    <div class="col scoreNumber">
-                      Score#
-                    </div>
-                    <div class="col">
-                      <a href="" class="mapmarker text-muted place-city" target="_blank"><i class="fa fa-map-marker" aria-hidden="true" style="font-size:48px;color:red"></i></a>
-                    </div>
-                  </div>
-                  <div class="row ">
-                    <div class="col snippet">
-                      Snippet
-                    </div>
-                    <div class="col">
-                      <a href="" class="text-muted place-city facebook" target="_blank"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
-                    </div>
-                    <div class="col">
-                      <a href="" class="text-muted place-city streetView" target="_blank"><i class="fa fa-street-view" aria-hidden="true"></i></a>
-                    </div>
+                <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+                  <div class="panel-body">
+                    Anim 
                   </div>
                 </div>
               </div>
-              <div class="panel panel-default" id="place6">
-                <div class="panel-heading" role="tab" id="heading6">
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingSix">
                   <h4 class="panel-title">
-                    <a role="button" data-toggle="collapse" class="placeName" data-parent="#accordion" href="#collapse6" aria-expanded="true" aria-controls="collapse6">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="true" aria-controls="collapseOne">
                       Collapsible Group Item #6
                     </a>
                   </h4>
                 </div>
-                <div id="collapse6" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading6">
-                  <div class="row panel-body">
-                    <div class="col">
-                      <a href="" class="text-muted place-city innerplaceName" target="_blank">Place Name</a>
-                    </div>
-                    <div class="col scoreName">
-                      Score :
-                    </div>
-                    <div class="col scoreNumber">
-                      Score#
-                    </div>
-                    <div class="col">
-                      <a href="" class="mapmarker text-muted place-city" target="_blank"><i class="fa fa-map-marker" aria-hidden="true" style="font-size:48px;color:red"></i></a>
-                    </div>
-                  </div>
-                  <div class="row ">
-                    <div class="col snippet">
-                      Snippet
-                    </div>
-                    <div class="col">
-                      <a href="" class="text-muted place-city facebook" target="_blank"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
-                    </div>
-                    <div class="col">
-                      <a href="" class="text-muted place-city streetView" target="_blank"><i class="fa fa-street-view" aria-hidden="true"></i></a>
-                    </div>
+                <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix">
+                  <div class="panel-body">
+                    Anim 
                   </div>
                 </div>
               </div>
-              <div class="panel panel-default" id="place7">
-                <div class="panel-heading" role="tab" id="heading7">
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingSeven">
                   <h4 class="panel-title">
-                    <a role="button" data-toggle="collapse" class="placeName" data-parent="#accordion" href="#collapse7" aria-expanded="true" aria-controls="collapse7">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="true" aria-controls="collapseOne">
                       Collapsible Group Item #7
                     </a>
                   </h4>
                 </div>
-                <div id="collapse7" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading7">
-                  <div class="row panel-body">
-                    <div class="col">
-                      <a href="" class="text-muted place-city innerplaceName" target="_blank">Place Name</a>
-                    </div>
-                    <div class="col scoreName">
-                      Score :
-                    </div>
-                    <div class="col scoreNumber">
-                      Score#
-                    </div>
-                    <div class="col">
-                      <a href="" class="mapmarker text-muted place-city" target="_blank"><i class="fa fa-map-marker" aria-hidden="true" style="font-size:48px;color:red"></i></a>
-                    </div>
-                  </div>
-                  <div class="row ">
-                    <div class="col snippet">
-                      Snippet
-                    </div>
-                    <div class="col">
-                      <a href="" class="text-muted place-city facebook" target="_blank"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
-                    </div>
-                    <div class="col">
-                      <a href="" class="text-muted place-city streetView" target="_blank"><i class="fa fa-street-view" aria-hidden="true"></i></a>
-                    </div>
+                <div id="collapseSeven" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSeven">
+                  <div class="panel-body">
+                    Anim 
                   </div>
                 </div>
               </div>
-              <div class="panel panel-default" id="place8">
-                <div class="panel-heading" role="tab" id="heading8">
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingEight">
                   <h4 class="panel-title">
-                    <a role="button" data-toggle="collapse" class="placeName" data-parent="#accordion" href="#collapse8" aria-expanded="true" aria-controls="collapse8">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseEight" aria-expanded="true" aria-controls="collapseOne">
                       Collapsible Group Item #8
                     </a>
                   </h4>
                 </div>
-                <div id="collapse8" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading8">
-                  <div class="row panel-body">
-                    <div class="col">
-                      <a href="" class="text-muted place-city innerplaceName" target="_blank">Place Name</a>
-                    </div>
-                    <div class="col scoreName">
-                      Score :
-                    </div>
-                    <div class="col scoreNumber">
-                      Score#
-                    </div>
-                    <div class="col">
-                      <a href="" class="mapmarker text-muted place-city" target="_blank"><i class="fa fa-map-marker" aria-hidden="true" style="font-size:48px;color:red"></i></a>
-                    </div>
-                  </div>
-                  <div class="row ">
-                    <div class="col snippet">
-                      Snippet
-                    </div>
-                    <div class="col">
-                      <a href="" class="text-muted place-city facebook" target="_blank"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
-                    </div>
-                    <div class="col">
-                      <a href="" class="text-muted place-city streetView" target="_blank"><i class="fa fa-street-view" aria-hidden="true"></i></a>
-                    </div>
+                <div id="collapseEight" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingEight">
+                  <div class="panel-body">
+                    Anim 
                   </div>
                 </div>
               </div>
-              <div class="panel panel-default" id="place9">
-                <div class="panel-heading" role="tab" id="heading9">
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingNine">
                   <h4 class="panel-title">
-                    <a role="button" data-toggle="collapse" class="placeName" data-parent="#accordion" href="#collapse9" aria-expanded="true" aria-controls="collapse9">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseNine" aria-expanded="true" aria-controls="collapseOne">
                       Collapsible Group Item #9
                     </a>
                   </h4>
                 </div>
-                <div id="collapse9" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading9">
-                  <div class="row panel-body">
-                    <div class="col">
-                      <a href="" class="text-muted place-city innerplaceName" target="_blank">Place Name</a>
-                    </div>
-                    <div class="col scoreName">
-                      Score :
-                    </div>
-                    <div class="col scoreNumber">
-                      Score#
-                    </div>
-                    <div class="col">
-                      <a href="" class="mapmarker text-muted place-city" target="_blank"><i class="fa fa-map-marker" aria-hidden="true" style="font-size:48px;color:red"></i></a>
-                    </div>
-                  </div>
-                  <div class="row ">
-                    <div class="col snippet">
-                      Snippet
-                    </div>
-                    <div class="col">
-                      <a href="" class="text-muted place-city facebook" target="_blank"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
-                    </div>
-                    <div class="col">
-                      <a href="" class="text-muted place-city streetView" target="_blank"><i class="fa fa-street-view" aria-hidden="true"></i></a>
-                    </div>
+                <div id="collapseNine" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingNine">
+                  <div class="panel-body">
+                    Anim 
                   </div>
                 </div>
               </div>
-              <div class="panel panel-default" id="place10">
-                <div class="panel-heading" role="tab" id="heading10">
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingTen">
                   <h4 class="panel-title">
-                    <a role="button" data-toggle="collapse" class="placeName" data-parent="#accordion" href="#collapse10" aria-expanded="true" aria-controls="collapse10">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTen" aria-expanded="true" aria-controls="collapseOne">
                       Collapsible Group Item #10
                     </a>
                   </h4>
                 </div>
-                <div id="collapse10" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading10">
-                  <div class="row panel-body">
-                    <div class="col">
-                      <a href="" class="text-muted place-city innerplaceName" target="_blank">Place Name</a>
-                    </div>
-                    <div class="col scoreName">
-                      Score :
-                    </div>
-                    <div class="col scoreNumber">
-                      Score#
-                    </div>
-                    <div class="col">
-                      <a href="" class="mapmarker text-muted place-city" target="_blank"><i class="fa fa-map-marker" aria-hidden="true" style="font-size:48px;color:red"></i></a>
-                    </div>
-                  </div>
-                  <div class="row ">
-                    <div class="col snippet">
-                      Snippet
-                    </div>
-                    <div class="col">
-                      <a href="" class="text-muted place-city facebook" target="_blank"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
-                    </div>
-                    <div class="col">
-                      <a href="" class="text-muted place-city streetView" target="_blank"><i class="fa fa-street-view" aria-hidden="true"></i></a>
-                    </div>
+                <div id="collapseTen" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTen">
+                  <div class="panel-body">
+                    Anim 
                   </div>
                 </div>
               </div>
             </div>
-<<<<<<< HEAD
-          </div>
-          <div id="hotels" class="container tabcontent divPadding">
-          </div>
-||||||| 019f1b2
-
-          <div id="hotels" class="container tabcontent divPadding">
-
-
-           
-          </div>
-=======
 
           <div id="restaurants" class="container tabcontent divPadding">
             <h2 id="rest-title">
                 <span>
                     Restaurants in <a href="https://www.google.fr/maps/search/london" class="text-muted meteo-city" target="_blank">London</a>
                 </span>
+ 
             </h2>
+          </div>
 
-            <div class="section-rest col">
-              <div class="row">1</div>
-              <div class="row">2</div>
-              <div class="row">3</div>
-              <div class="row">4</div>
-            </div>
-            <div class="section-rest col">
-              <div class="row">1</div>
-              <div class="row">2</div>
-              <div class="row">3</div>
-              <div class="row">4</div>
-            </div>
-            <div class="section-rest col">
-              <div class="row">1</div>
-              <div class="row">2</div>
-              <div class="row">3</div>
-              <div class="row">4</div>
-            </div>
-            <div class="section-rest col">
-              <div class="row">1</div>
-              <div class="row">2</div>
-              <div class="row">3</div>
-              <div class="row">4</div>
-            </div>
-            <div class="section-rest col">
-              <div class="row">1</div>
-              <div class="row">2</div>
-              <div class="row">3</div>
-              <div class="row">4</div>
-            </div>
->>>>>>> f9c38ddf27211b5db23230bab8ff7b656da1846a
-
-<<<<<<< HEAD
-||||||| 019f1b2
           
 
 
-=======
-          </div>         
-
-
->>>>>>> f9c38ddf27211b5db23230bab8ff7b656da1846a
           <div id="about" class="container-fluid tabcontent divPadding">
             <div class="row">
               

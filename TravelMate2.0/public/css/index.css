@@ -276,34 +276,6 @@ h2 a:hover{
   display: none;
   overflow: hidden;
   background-color: gray;
-<<<<<<< HEAD
-}
-
-.panel-group{
-  width: 70%;
-}
-
-.placeName{
-  font-size: 25px;
-}
-
-.innerplaceName{
-  font-size: 25px;
-  color: brown;
-}
-
-.iconLink{
-  font-size:48px;
-  color:red"
-}
-
-.textFont{
-  font-size: 18px;
-}
-
-||||||| 019f1b2
-}
-=======
 }
 
 /*Restaurant*/
@@ -312,4 +284,3 @@ h2 a:hover{
   margin-top: 25px;
   color: #111;
 }
->>>>>>> f9c38ddf27211b5db23230bab8ff7b656da1846a
