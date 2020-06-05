@@ -11,19 +11,6 @@ var hereplaceAPIID = "855JLDgYc8KZ7lAF1gd2";
 var hereplaceAPIkey = "gSzJtXE9HZmTck1t-h7SYvVoDFXLchSr_PGJjyk9U2c"
 
 
-/*
-
-
-https://discover.search.hereapi.com/v1/
-discover
-?at=52.5228,13.412
-&q=attraction
-&limit=10
-&apiKey=gSzJtXE9HZmTck1t-h7SYvVoDFXLchSr_PGJjyk9U2c
-
-
-*/
-
 var city = document.getElementById("city");
 var show = false;
 var cityID = 0;
@@ -155,27 +142,6 @@ $(document).ready(function(){
             meteoTitle.html('City <span class="text-muted">' + city + '</span> not found');
         }
     });
-
-    getRestCityId(city, function (data, error) {
-        if (error == null) {
-            cityID = cityID = data.location_suggestions[0].id;
-        }
-        else {
-            restTitle = $('#rest-title span');
-            restTitle.html('City <span class="text-muted">' + city + '</span> not found');
-        }
-    });
-
-    getTop5Rest(cityID, function (data, error) {
-        if (error == null) {
-            //displayRest(data);;
-        }
-        else {
-            restTitle = $('#rest-title span');
-            restTitle.html('CityID <span class="text-muted">' + city + '</span> not found');
-        }
-    });
-
 });
 
 function getMeteoByCity(city, callback)
@@ -207,7 +173,7 @@ function getRestCityId(city, callback){
 function getTop5Rest(cityID, callback){
     $.ajax({
         headers: {'user-key' : zomatoAPI},
-        url:  'https://developers.zomato.com/api/v2.1/search?entity_id='+cityID+'&entity_type=city&count=5&sort=rating&order=desc',
+        url:  'https://developers.zomato.com/api/v2.1/search?entity_id='+cityID+'&entity_type=city&count=10&sort=rating&order=desc',
         success: function(data){
             callback(data, null);
         },
@@ -216,17 +182,6 @@ function getTop5Rest(cityID, callback){
         }
     });
 }
-
-/*
-
-https://discover.search.hereapi.com/v1/
-discover
-?at=52.5228,13.412
-&q=attraction
-&limit=10
-&apiKey=gSzJtXE9HZmTck1t-h7SYvVoDFXLchSr_PGJjyk9U2c
-
-*/
 
 function getPlacesByCity(city, cityLat, cityLong, callback){
     $.ajax({

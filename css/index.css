@@ -341,15 +341,15 @@ h2 a:hover{
 }
 
 .rest-url{
- text-align:  center;
-}
-
-.rest-img{
-  height: 6em;
-  width: 8em;
-  padding: 0.1 0.1 0.1 0.1
-}
-
-p {
-  color: black;
-}
+  text-align:  center;
+ }
+ 
+ .rest-img{
+   height: 6em;
+   width: 8em;
+   padding: 0.1 0.1 0.1 0.1
+ }
+ 
+ p {
+   color: black;
+ }
