@@ -41,9 +41,6 @@
                 <input name="meteo-city" id="city" class="form-control mr-sm-2" placeholder="City" required type="text">
                 <p id="requiredCity" style="display: none;">please enter a city name</p>
                 <h2 id="city-title" style="display: none;">
-                  <span>
-                      city <h6 id="cityNotFoind"> </h6> not found
-                  </span>
                 </h2>
                 <input type="submit" id="btnSubmit" class="btn btn-secondary my-2 my-sm-0" value="Submit" onclick="openPage('options', this, 'cadetblue')">
             </form>
@@ -80,31 +77,42 @@
                   <div id="meteo-day-1" class="meteo-day col-sm">
                    
                       <h3><span class="name">Day 1</span> <span class="text-muted date">--/--</span></h3>
-                      
+                    
                       <div class="meteo-block row meteo-temperature-container">
                         <div class="col">
                           <span class="cloudicon"><i class="wi wi-night-sleet "></i></span>  <span class="weatherDescription meteo-block-data"></span> 
                         </div>
                       </div>
 
-                      <div class="meteo-block row meteo-temperature-container">
-                        <div class=" col meteo-temperature">
-                          <span class="meteo-block-title">Feels Like :  </span><span class="feelsTemp meteo-block-data">--°F</span>
+                      <div class="row">
+                        <div class="col meteo-block">
+                            <div class="meteo-block-title">
+                                Temperature
+                            </div>
+                            <div class="Temp meteo-block-data">--°F</div>
                         </div>
-                      </div>
-
-
-                      <div class="meteo-block row meteo-temperature-container">
-                        <div class=" col meteo-temperature">
-                            <span class="meteo-block-title">Min Temp : </span><span class="minTemp meteo-block-data">--°F</span>
+                        <div class="col meteo-block">
+                            <div class="meteo-block-title">
+                                Feels like
+                            </div>
+                            <div class="feelsTemp meteo-block-data">--°F</div>
                         </div>
-                      </div>
+                       </div>
 
-                      <div class="meteo-block row meteo-temperature-container">
-                        <div class="col meteo-temperature">
-                          <span class="meteo-block-title">Max Temp:  </span><span class="minTemp meteo-block-data">--°F</span>
+                       <div class="row">
+                        <div class="col meteo-block">
+                            <div class="meteo-block-title">
+                              Min Temp
+                            </div>
+                            <div class="minTemp meteo-block-data">--°F</div>
                         </div>
-                      </div>
+                        <div class="col meteo-block">
+                            <div class="meteo-block-title">
+                              Max Temp
+                            </div>
+                            <div class="maxTemp meteo-block-data">--°F</div>
+                        </div>
+                       </div>
 
                       <div class="row">
                           <div class="col meteo-block meteo-humidity">
@@ -147,24 +155,35 @@
                         </div>
                       </div>
 
-                      <div class="meteo-block row meteo-temperature-container">
-                        <div class=" col meteo-temperature">
-                          <span class="meteo-block-title">Feels Like :  </span><span class="feelsTemp meteo-block-data">--°F</span>
+                      <div class="row">
+                        <div class="col meteo-block">
+                            <div class="meteo-block-title">
+                                Temperature
+                            </div>
+                            <div class="Temp meteo-block-data">--°F</div>
                         </div>
-                      </div>
-
-
-                      <div class="meteo-block row meteo-temperature-container">
-                        <div class=" col meteo-temperature">
-                            <span class="meteo-block-title">Min Temp : </span><span class="minTemp meteo-block-data">--°F</span>
+                        <div class="col meteo-block">
+                            <div class="meteo-block-title">
+                                Feels like
+                            </div>
+                            <div class="feelsTemp meteo-block-data">--°F</div>
                         </div>
-                      </div>
+                       </div>
 
-                      <div class="meteo-block row meteo-temperature-container">
-                        <div class="col meteo-temperature">
-                          <span class="meteo-block-title">Max Temp:  </span><span class="minTemp meteo-block-data">--°F</span>
+                       <div class="row">
+                        <div class="col meteo-block">
+                            <div class="meteo-block-title">
+                              Min Temp
+                            </div>
+                            <div class="minTemp meteo-block-data">--°F</div>
                         </div>
-                      </div>
+                        <div class="col meteo-block">
+                            <div class="meteo-block-title">
+                              Max Temp
+                            </div>
+                            <div class="maxTemp meteo-block-data">--°F</div>
+                        </div>
+                       </div>
                       <div class="row">
                           <div class="col meteo-block meteo-humidity">
                               <div class="meteo-block-title">
@@ -206,24 +225,36 @@
                         </div>
                       </div>
 
-                      <div class="meteo-block row meteo-temperature-container">
-                        <div class=" col meteo-temperature">
-                          <span class="meteo-block-title">Feels Like :  </span><span class="feelsTemp meteo-block-data">--°F</span>
+                      <div class="row">
+                        <div class="col meteo-block">
+                            <div class="meteo-block-title">
+                                Temperature
+                            </div>
+                            <div class="Temp meteo-block-data">--°F</div>
                         </div>
-                      </div>
-
-
-                      <div class="meteo-block row meteo-temperature-container">
-                        <div class=" col meteo-temperature">
-                            <span class="meteo-block-title">Min Temp : </span><span class="minTemp meteo-block-data">--°F</span>
+                        <div class="col meteo-block">
+                            <div class="meteo-block-title">
+                                Feels like
+                            </div>
+                            <div class="feelsTemp meteo-block-data">--°F</div>
                         </div>
-                      </div>
+                       </div>
 
-                      <div class="meteo-block row meteo-temperature-container">
-                        <div class="col meteo-temperature">
-                          <span class="meteo-block-title">Max Temp:  </span><span class="minTemp meteo-block-data">--°F</span>
+                       <div class="row">
+                        <div class="col meteo-block">
+                            <div class="meteo-block-title">
+                              Min Temp
+                            </div>
+                            <div class="minTemp meteo-block-data">--°F</div>
                         </div>
-                      </div>
+                        <div class="col meteo-block">
+                            <div class="meteo-block-title">
+                              Max Temp
+                            </div>
+                            <div class="maxTemp meteo-block-data">--°F</div>
+                        </div>
+                       </div>
+                       
                       <div class="row">
                           <div class="col meteo-block meteo-humidity">
                               <div class="meteo-block-title">

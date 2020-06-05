@@ -236,7 +236,8 @@ function displayMeteo(data){
         // Get DOM elements
         day = $("#meteo-day-" + (i + 1));
         icon = day.find(".wi");
-        weatherDescription = day.find(".weatherDescription")
+        weatherDescription = day.find(".weatherDescription");
+        temperature = day.find(".Temp");
         feelstemperature = day.find(".feelsTemp");
         mintemperature = day.find(".minTemp");
         maxtemperature = day.find(".maxTemp");
@@ -252,6 +253,7 @@ function displayMeteo(data){
         //icon[0].attributes[1].value = "http://openweathermap.org/img/wn/" + code + "@2x.png";
         icon.attr('class', 'wi wi-owm-' + code);
         weatherDescription.text(meteo.weather[0].description);
+        temperature.text(meteo.main.temp+ "°F");
         feelstemperature.text(meteo.main.feels_like+ "°F");
         mintemperature.text(meteo.main.temp_min+ "°F");
         maxtemperature.text(meteo.main.temp_max+ "°F");
