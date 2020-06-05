@@ -406,13 +406,16 @@ function displayRest(data, city, country, cityLat, cityLong){
         restCuisine = restCard.find(".rest-cuisine");
         restRating = restCard.find(".rest-rating")
         restURL = restCard.find(".rest-url")
+        restimg = restCard.find(".rest-img");
 
         restName.text(restaurant.name);
+        restimg.attr('src', restaurant.featured_image);
         restAddress.text(restaurant.location.address);
-        restCuisine.text(restaurant.cuisines);
-        restRating.text(restaurant.user_rating.aggregate_rating);
+        restCuisine.text('Cuisine: '+restaurant.cuisines);
+        restRating.text('Rating: '+ restaurant.user_rating.aggregate_rating);
         restURL.attr('href', restaurant.url)
         innerplaceName.text(place.name);
+        
      }
 } 
 
