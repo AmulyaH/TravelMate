@@ -276,7 +276,6 @@ h2 a:hover{
   display: none;
   overflow: hidden;
   background-color: gray;
-<<<<<<< HEAD
 }
 
 .panel-group{
@@ -301,15 +300,9 @@ h2 a:hover{
   font-size: 18px;
 }
 
-||||||| 019f1b2
-}
-=======
-}
-
 /*Restaurant*/
 #rest-title{
   text-align: center;
   margin-top: 25px;
   color: #111;
 }
->>>>>>> f9c38ddf27211b5db23230bab8ff7b656da1846a

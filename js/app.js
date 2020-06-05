@@ -8,23 +8,10 @@ var travelAccountId = "5SZH7AXJ"
 
 var city = document.getElementById("city");
 var show = false;
-<<<<<<< HEAD
-var cityCoordlat;
-var cityCoordlon;
-var country;
-
-
-
-||||||| 019f1b2
-
-
-
-=======
 var cityID = 0;
 var cityLat =0;
 var cityLong = 0;
 var country;
->>>>>>> f9c38ddf27211b5db23230bab8ff7b656da1846a
 
 function saveForm(){
 
@@ -139,17 +126,10 @@ $(document).ready(function(){
 
     getMeteoByCity(city, function (data, error) {
         if (error == null) {
-<<<<<<< HEAD
-            cityCoordlat = data.city.coord.lat;
-            cityCoordlon = data.city.coord.lon;
-            country = data.city.country;
-||||||| 019f1b2
-=======
             cityLat = data.city.coord.lat;
             cityLong = data.city.coord.lon;
             city = data.city.name;
             country = data.city.country
->>>>>>> f9c38ddf27211b5db23230bab8ff7b656da1846a
             displayMeteo(data);
         }
         else {
@@ -158,20 +138,6 @@ $(document).ready(function(){
         }
     });
 
-<<<<<<< HEAD
-||||||| 019f1b2
-    getPlacesByCity(city, function (traveldata, error){
-        if (error == null) {
-            displayPlacesData(traveldata);
-        }
-        else {
-            meteoTitle = $('#meteo-title span');
-            meteoTitle.html('City <span class="text-muted">' + city + '</span> not found');
-        }
-    });
-
-
-=======
     getRestCityId(city, function (data, error) {
         if (error == null) {
             cityID = cityID = data.location_suggestions[0].id;
@@ -184,7 +150,7 @@ $(document).ready(function(){
 
     getTop5Rest(cityID, function (data, error) {
         if (error == null) {
-            displayRest(data);;
+            //displayRest(data);;
         }
         else {
             restTitle = $('#rest-title span');
@@ -194,14 +160,13 @@ $(document).ready(function(){
 
     getPlacesByCity(city, function (traveldata, error){
         if (error == null) {
-            displayPlacesData(traveldata);
+            displayPlacesData(traveldata, city, country, cityLat, cityLong);
         }
         else {
             meteoTitle = $('#meteo-title span');
             meteoTitle.html('City <span class="text-muted">' + city + '</span> not found');
         }
     });
->>>>>>> f9c38ddf27211b5db23230bab8ff7b656da1846a
 });
 
 function getMeteoByCity(city, callback)
@@ -261,27 +226,13 @@ $("#meteo-form").submit(function (event) {
     loading = $('#search-loading');
     loading.attr('class', 'loading inload');
     // Get and update meteo
-<<<<<<< HEAD
-    var city = event.currentTarget[0].value;
-    
-||||||| 019f1b2
-    var city = event.currentTarget[0].value;
-=======
     city = event.currentTarget[0].value;
->>>>>>> f9c38ddf27211b5db23230bab8ff7b656da1846a
     getMeteoByCity(city, function (data, error){
         if (error == null) {
-<<<<<<< HEAD
-            cityCoordlat = data.city.coord.lat;
-            cityCoordlon = data.city.coord.lon;
-            country = data.city.country;
-||||||| 019f1b2
-=======
             cityLat = data.city.coord.lat;
             cityLong = data.city.coord.lon;
             city = data.city.name;
             country = data.city.country;
->>>>>>> f9c38ddf27211b5db23230bab8ff7b656da1846a
             displayMeteo(data);
         }
         else {
@@ -312,7 +263,7 @@ $("#meteo-form").submit(function (event) {
     
     getPlacesByCity(city, function (traveldata, error){
         if (error == null) {
-            displayPlacesData(traveldata, city, country, cityCoordlat, cityCoordlon);
+            displayPlacesData(traveldata, city, country, cityLat, cityLong);
         }
         else {
             meteoTitle = $('#places-title span');
@@ -350,7 +301,7 @@ $("#geolocation").click(function (event) {
 
         getPlacesByCity(city, function (traveldata, error){
             if (error == null) {
-                displayPlacesData(traveldata, city, country, cityCoordlat, cityCoordlon);
+                displayPlacesData(traveldata, city, country, cityLat, cityLong);
             }
             else {
                 meteoTitle = $('#places-title span');
@@ -436,12 +387,7 @@ function displayMeteo(data){
     $('body').css('background', 'linear-gradient(' + rgb1 + ',' + rgb2 + ')'); */
 }
 
-<<<<<<< HEAD
-function displayPlacesData(data, city,country, cityCoordlat, cityCoordlon){
-||||||| 019f1b2
-function displayPlacesData(data){
-=======
-function displayRest(data){
+/* function displayPlacesData(data, city,country, cityLat, cityLong){
     googleMapCity = "https://www.google.fr/maps/place/" + cityLat + "," + cityLong;
     $('#rest-title span').html('Restaurants in <a href="' + googleMapCity + '" class="text-muted meteo-city" target="_blank">' + city + ', ' + country + '</a>');
     console.log("Restaurant#1 Name:",data.restaurants[0].restaurant.name);
@@ -449,13 +395,11 @@ function displayRest(data){
     console.log("Restaurant#1 Adress:",data.restaurants[0].restaurant.location.address);
     console.log("Restaurant#1 Cuisine:",data.restaurants[0].restaurant.cuisines);
     console.log("Restaurant#1 Rating:",data.restaurants[0].restaurant.user_rating.aggregate_rating);
-}
+} */
 
-function displayPlacesData(data){
->>>>>>> f9c38ddf27211b5db23230bab8ff7b656da1846a
+function displayPlacesData(data, city,country, cityLat, cityLong){
      // Update Google Map URL
-<<<<<<< HEAD
-     googleMapCity = "https://www.google.fr/maps/place/" + cityCoordlat + "," + cityCoordlon;
+     googleMapCity = "https://www.google.fr/maps/place/" + cityLat + "," + cityLong;
      $('#places-title span').html('Top 10 Point Of Attractions in <a href="' + googleMapCity + '" class="text-muted meteo-city" target="_blank">' + city + ', ' + country + '</a>');
 
      for(var i =0; i < data.results.length; i++)
@@ -484,17 +428,6 @@ function displayPlacesData(data){
         facebook.attr('href', attribution[0].url);
         streetView.attr('href', attribution[1].url);
      }
-||||||| 019f1b2
-     googleMapCity = "https://www.google.fr/maps/place/" + data.city.coord.lat + "," + data.city.coord.lon;
-     $('#places-title span').html('Top 10 Point Of Attractions in<a href="' + googleMapCity + '" class="text-muted meteo-city" target="_blank">' + data.city.name + ', ' + data.city.country + '</a>');
-
-
-=======
-     googleMapCity = "https://www.google.fr/maps/place/" + cityLat + "," + cityLong;
-     $('#places-title span').html('Top 10 Point Of Attractions in<a href="' + googleMapCity + '" class="text-muted meteo-city" target="_blank">' + city + ', ' + country + '</a>');
-
-
->>>>>>> f9c38ddf27211b5db23230bab8ff7b656da1846a
 }
 
 
