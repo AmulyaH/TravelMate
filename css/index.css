@@ -254,3 +254,11 @@ h2 a:hover{
       flex: 100%;
   }
 }
+
+
+/*Restaurant*/
+#rest-title{
+  text-align: center;
+  margin-top: 25px;
+  color: #111;
+}

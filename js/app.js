@@ -1,9 +1,10 @@
-
+var zomatoAPI = "44f2ef10b109462372c1dadf31aadc51";
 
 var OpenweatherAPI = "06d6ba56c4f8e2f08f38c52fd8224fb6";
 
 var city = document.getElementById("city");
 var show = false;
+var cityID = 0;
 
 function saveForm(){
 
@@ -125,6 +126,21 @@ $(document).ready(function(){
             meteoTitle.html('City <span class="text-muted">' + city + '</span> not found');
         }
         // Stop loader
+        //setTimeout(function () {
+        //    loading.attr('class', 'loading')
+        //}, 500);
+    });
+
+    //
+    getRestCityId(city, function (data, error) {
+        if (error == null) {
+            cityID = cityID = data.location_suggestions[0].id;
+        }
+        else {
+            restTitle = $('#rest-title span');
+            restTitle.html('City <span class="text-muted">' + city + '</span> not found');
+        }
+        // Stop loader
         setTimeout(function () {
             loading.attr('class', 'loading')
         }, 500);
@@ -134,6 +150,19 @@ $(document).ready(function(){
 function getMeteoByCity(city, callback){
     $.ajax({
         url: "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&APPID=" + OpenweatherAPI,
+        success: function(data){
+            callback(data, null);
+        },
+        error: function(req, status, error){
+            callback(null, error);
+        }
+    });
+}
+
+function getRestCityId(city, callback){
+    $.ajax({
+        headers: {'user-key' : zomatoAPI},
+        url: "https://developers.zomato.com/api/v2.1/cities?q=" + city,
         success: function(data){
             callback(data, null);
         },
@@ -157,6 +186,20 @@ $("#meteo-form").submit(function (event) {
         else {
             meteoTitle = $('#meteo-title span');
             meteoTitle.html('City <span class="text-muted">' + city + '</span> not found');
+        }
+        // Stop loader
+        setTimeout(function () {
+            loading.attr('class', 'loading')
+        }, 500);
+    });
+
+    getRestCityId(city, function (data, error) {
+        if (error == null) {
+            cityID = cityID = data.location_suggestions[0].id;
+        }
+        else {
+            restTitle = $('#rest-title span');
+            restTitle.html('City <span class="text-muted">' + city + '</span> not found');
         }
         // Stop loader
         setTimeout(function () {
@@ -269,4 +312,13 @@ function displayMeteo(data){
     rgb1 = 'rgb(' + hslToRgb(hue1 / 360, 0.6, 0.5).join(',') + ')';
     rgb2 = 'rgb(' + hslToRgb(hue2 / 360, 0.6, 0.5).join(',') + ')';
     $('body').css('background', 'linear-gradient(' + rgb1 + ',' + rgb2 + ')');
+}
+
+
+function displayRest(data){
+    //googleMapCity = "https://www.google.fr/maps/place/" + data.city.coord.lat + "," + data.city.coord.lon;
+    //$('#rest-title span').html('Restaurants in <a href="' + googleMapCity + '" class="text-muted meteo-city" target="_blank">' + data.city.name + ', ' + data.city.country + '</a>');
+    //$('#rest-title span').html('Stat:');
+    //sampleDiv = $('#rest-data');
+    //sampleDiv.html(data);
 }
