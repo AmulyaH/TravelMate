@@ -8,6 +8,9 @@ var travelAccountId = "5SZH7AXJ"
 
 var city = document.getElementById("city");
 var show = false;
+var cityCoordlat;
+var cityCoordlon;
+var country;
 
 
 
@@ -125,6 +128,9 @@ $(document).ready(function(){
 
     getMeteoByCity(city, function (data, error) {
         if (error == null) {
+            cityCoordlat = data.city.coord.lat;
+            cityCoordlon = data.city.coord.lon;
+            country = data.city.country;
             displayMeteo(data);
         }
         else {
@@ -132,17 +138,6 @@ $(document).ready(function(){
             meteoTitle.html('City <span class="text-muted">' + city + '</span> not found');
         }
     });
-
-    getPlacesByCity(city, function (traveldata, error){
-        if (error == null) {
-            displayPlacesData(traveldata);
-        }
-        else {
-            meteoTitle = $('#meteo-title span');
-            meteoTitle.html('City <span class="text-muted">' + city + '</span> not found');
-        }
-    });
-
 
 });
 
@@ -178,8 +173,12 @@ $("#meteo-form").submit(function (event) {
     loading.attr('class', 'loading inload');
     // Get and update meteo
     var city = event.currentTarget[0].value;
+    
     getMeteoByCity(city, function (data, error){
         if (error == null) {
+            cityCoordlat = data.city.coord.lat;
+            cityCoordlon = data.city.coord.lon;
+            country = data.city.country;
             displayMeteo(data);
         }
         else {
@@ -190,10 +189,10 @@ $("#meteo-form").submit(function (event) {
 
     getPlacesByCity(city, function (traveldata, error){
         if (error == null) {
-            displayPlacesData(traveldata);
+            displayPlacesData(traveldata, city, country, cityCoordlat, cityCoordlon);
         }
         else {
-            meteoTitle = $('#meteo-title span');
+            meteoTitle = $('#places-title span');
             meteoTitle.html('City <span class="text-muted">' + city + '</span> not found');
         }
     });
@@ -228,10 +227,10 @@ $("#geolocation").click(function (event) {
 
         getPlacesByCity(city, function (traveldata, error){
             if (error == null) {
-                displayPlacesData(traveldata);
+                displayPlacesData(traveldata, city, country, cityCoordlat, cityCoordlon);
             }
             else {
-                meteoTitle = $('#meteo-title span');
+                meteoTitle = $('#places-title span');
                 meteoTitle.html('City <span class="text-muted">' + city + '</span> not found');
             }
         });
@@ -314,12 +313,37 @@ function displayMeteo(data){
     $('body').css('background', 'linear-gradient(' + rgb1 + ',' + rgb2 + ')'); */
 }
 
-function displayPlacesData(data){
+function displayPlacesData(data, city,country, cityCoordlat, cityCoordlon){
      // Update Google Map URL
-     googleMapCity = "https://www.google.fr/maps/place/" + data.city.coord.lat + "," + data.city.coord.lon;
-     $('#places-title span').html('Top 10 Point Of Attractions in<a href="' + googleMapCity + '" class="text-muted meteo-city" target="_blank">' + data.city.name + ', ' + data.city.country + '</a>');
+     googleMapCity = "https://www.google.fr/maps/place/" + cityCoordlat + "," + cityCoordlon;
+     $('#places-title span').html('Top 10 Point Of Attractions in <a href="' + googleMapCity + '" class="text-muted meteo-city" target="_blank">' + city + ', ' + country + '</a>');
 
+     for(var i =0; i < data.results.length; i++)
+     {
+        place = data.results[i];
 
+        placehtml = $("#place" + (i + 1));
+        placeName = placehtml.find(".placeName");
+        innerplaceName = placehtml.find(".innerplaceName ");
+        score = placehtml.find(".scoreNumber");
+        mapmarker = placehtml.find(".mapmarker");
+        snippet = placehtml.find(".snippet");
+        facebook = placehtml.find(".facebook");
+        streetView = placehtml.find(".streetView");
+
+        attribution = place.attribution;
+        coordinates = place.coordinates;
+        googleMapPlace = "https://www.google.fr/maps/place/" + coordinates.latitude + "," + coordinates.longitude;
+
+        placeName.text(place.name);
+        innerplaceName.text(place.name);
+        innerplaceName.attr('href', attribution[2].url);
+        mapmarker.attr('href', googleMapPlace);
+        score.text(place.score.toFixed(2));
+        snippet.text(place.snippet);
+        facebook.attr('href', attribution[0].url);
+        streetView.attr('href', attribution[1].url);
+     }
 }
 
 

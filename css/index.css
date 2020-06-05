@@ -277,3 +277,26 @@ h2 a:hover{
   overflow: hidden;
   background-color: gray;
 }
+
+.panel-group{
+  width: 70%;
+}
+
+.placeName{
+  font-size: 25px;
+}
+
+.innerplaceName{
+  font-size: 25px;
+  color: brown;
+}
+
+.iconLink{
+  font-size:48px;
+  color:red"
+}
+
+.textFont{
+  font-size: 18px;
+}
+
