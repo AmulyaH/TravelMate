@@ -323,6 +323,26 @@ $("#geolocation").click(function (event) {
             }, 500);
         });
 
+        getTop5Rest(cityID, function (data, error) {
+            if (error == null) {
+                displayRest(data);
+            }
+            else {
+                restTitle = $('#rest-title span');
+                restTitle.html('City <span class="text-muted">' + city + '</span> not found');
+            }
+        });
+        
+        getPlacesByCity(city, cityLat, cityLong, function (traveldata, error){
+            if (error == null) {
+                displayPlacesData(traveldata, city, country, cityLat, cityLong);
+            }
+            else {
+                meteoTitle = $('#places-title span');
+                meteoTitle.html('City <span class="text-muted">' + city + '</span> not found');
+            }
+        });
+
         getPlacesByCity(city, cityLat, cityLong, function (traveldata, error){
             if (error == null) {
                 displayPlacesData(traveldata, city, country, cityLat, cityLong);
