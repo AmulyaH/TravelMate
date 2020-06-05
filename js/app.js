@@ -6,6 +6,24 @@ var travelAPIKey = "re1hisqd696bhfquhxpifv5uzzr2agih";
 
 var travelAccountId = "5SZH7AXJ"
 
+var hereplaceAPIID = "855JLDgYc8KZ7lAF1gd2";
+
+var hereplaceAPIkey = "gSzJtXE9HZmTck1t-h7SYvVoDFXLchSr_PGJjyk9U2c"
+
+
+/*
+
+
+https://discover.search.hereapi.com/v1/
+discover
+?at=52.5228,13.412
+&q=attraction
+&limit=10
+&apiKey=gSzJtXE9HZmTck1t-h7SYvVoDFXLchSr_PGJjyk9U2c
+
+
+*/
+
 var city = document.getElementById("city");
 var show = false;
 var cityID = 0;
@@ -126,8 +144,6 @@ $(document).ready(function(){
 
     getMeteoByCity(city, function (data, error) {
         if (error == null) {
-            cityLat = data.city.coord.lat;
-            cityLong = data.city.coord.lon;
             city = data.city.name;
             country = data.city.country
             displayMeteo(data);
@@ -155,16 +171,6 @@ $(document).ready(function(){
         else {
             restTitle = $('#rest-title span');
             restTitle.html('CityID <span class="text-muted">' + city + '</span> not found');
-        }
-    });
-
-    getPlacesByCity(city, function (traveldata, error){
-        if (error == null) {
-            displayPlacesData(traveldata, city, country, cityLat, cityLong);
-        }
-        else {
-            meteoTitle = $('#meteo-title span');
-            meteoTitle.html('City <span class="text-muted">' + city + '</span> not found');
         }
     });
 });
@@ -208,9 +214,20 @@ function getTop5Rest(cityID, callback){
     });
 }
 
-function getPlacesByCity(city, callback){
+/*
+
+https://discover.search.hereapi.com/v1/
+discover
+?at=52.5228,13.412
+&q=attraction
+&limit=10
+&apiKey=gSzJtXE9HZmTck1t-h7SYvVoDFXLchSr_PGJjyk9U2c
+
+*/
+
+function getPlacesByCity(city, cityLat, cityLong, callback){
     $.ajax({
-        url: "https://www.triposo.com/api/20200405/poi.json?location_id=" + city + "&account=" + travelAccountId + "&&token=" + travelAPIKey,
+        url: "https://discover.search.hereapi.com/v1/discover?at=" + cityLat + "," + cityLong + "&q=attraction&limit=10&apiKey=" + hereplaceAPIkey ,//    "&account=" + travelAccountId + "&&token=" + travelAPIKey,
         success: function(data){
             callback(data, null);
         },
@@ -261,7 +278,7 @@ $("#meteo-form").submit(function (event) {
         }
     });
     
-    getPlacesByCity(city, function (traveldata, error){
+    getPlacesByCity(city, cityLat, cityLong, function (traveldata, error){
         if (error == null) {
             displayPlacesData(traveldata, city, country, cityLat, cityLong);
         }
@@ -287,6 +304,8 @@ $("#geolocation").click(function (event) {
         // Get and update meteo
         getMeteoByCoordinates(lat, lon, function (data, error) {
             if (error == null) {
+                city = data.city.name;
+                //cityLong = data.city.coord.lon;
                 displayMeteo(data);
             }
             else {
@@ -299,9 +318,9 @@ $("#geolocation").click(function (event) {
             }, 500);
         });
 
-        getPlacesByCity(city, function (traveldata, error){
+        getPlacesByCity(city, lat, lon, function (traveldata, error){
             if (error == null) {
-                displayPlacesData(traveldata, city, country, cityLat, cityLong);
+                displayPlacesData(traveldata, city, country, lat, lon);
             }
             else {
                 meteoTitle = $('#places-title span');
@@ -350,7 +369,7 @@ function displayMeteo(data){
     for (var i = 0; i < 3; i++){
         // Get meteo
         meteo = data.list[i*8];
-        // Get DOM elements
+        // Get DOM elementsgit 
         day = $("#meteo-day-" + (i + 1));
         icon = day.find(".wi");
         weatherDescription = day.find(".weatherDescription");
@@ -402,31 +421,38 @@ function displayPlacesData(data, city,country, cityLat, cityLong){
      googleMapCity = "https://www.google.fr/maps/place/" + cityLat + "," + cityLong;
      $('#places-title span').html('Top 10 Point Of Attractions in <a href="' + googleMapCity + '" class="text-muted meteo-city" target="_blank">' + city + ', ' + country + '</a>');
 
-     for(var i =0; i < data.results.length; i++)
+     for(var i =0; i < data.items.length; i++)
      {
-        place = data.results[i];
+        place = data.items[i];
+        var add;
 
         placehtml = $("#place" + (i + 1));
         placeName = placehtml.find(".placeName");
-        innerplaceName = placehtml.find(".innerplaceName ");
-        score = placehtml.find(".scoreNumber");
+        //innerplaceName = placehtml.find(".innerplaceName ");
+        //score = placehtml.find(".scoreNumber");
         mapmarker = placehtml.find(".mapmarker");
-        snippet = placehtml.find(".snippet");
-        facebook = placehtml.find(".facebook");
-        streetView = placehtml.find(".streetView");
+        //snippet = placehtml.find(".snippet");
+        //facebook = placehtml.find(".facebook");
+        //streetView = placehtml.find(".streetView");
+
+        address = placehtml.find(".address");
+        distance = placehtml.find(".distance");
 
         attribution = place.attribution;
-        coordinates = place.coordinates;
-        googleMapPlace = "https://www.google.fr/maps/place/" + coordinates.latitude + "," + coordinates.longitude;
+        coordinates = place.position;
+        googleMapPlace = "https://www.google.fr/maps/place/" + coordinates.lat + "," + coordinates.lng;
 
-        placeName.text(place.name);
-        innerplaceName.text(place.name);
-        innerplaceName.attr('href', attribution[2].url);
+        placeName.text(place.title);
+        //innerplaceName.text(place.title);
+        //innerplaceName.attr('href', attribution[2].url);
+        address.text(place.address.label);
+        //var distanceInMiles = place.distance * 0.00062137;
+        distance.text("Distance : " + (place.distance * 0.00062137).toFixed(2) + " miles");
         mapmarker.attr('href', googleMapPlace);
-        score.text(place.score.toFixed(2));
-        snippet.text(place.snippet);
-        facebook.attr('href', attribution[0].url);
-        streetView.attr('href', attribution[1].url);
+        //score.text(place.score.toFixed(2));
+        //snippet.text(place.snippet);
+        //facebook.attr('href', attribution[0].url);
+        //streetView.attr('href', attribution[1].url);
      }
 }
 
