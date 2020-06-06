@@ -365,3 +365,6 @@ h2 a:hover{
    color: #fff !important;
  }
 
+.rest-rating {
+  font-weight: bold;
+}

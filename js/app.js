@@ -162,7 +162,7 @@ function getMeteoByCity(city, callback)
 
 function getRestCityId(city, callback){
     $.ajax({
-        headers: {'user-key' : varomato},
+        headers: {'user-key' : zomatoAPI},
         url: "https://developers.zomato.com/api/v2.1/cities?q=" + city,
         success: function(data){
             callback(data, null);
@@ -175,7 +175,7 @@ function getRestCityId(city, callback){
 
 function getTop6Rest(cityID, callback){
     $.ajax({
-        headers: {'user-key' : varomato},
+        headers: {'user-key' : zomatoAPI},
         url:  'https://developers.zomato.com/api/v2.1/search?entity_id='+cityID+'&entity_type=city&count=6&sort=rating&order=desc',
         success: function(data){
             callback(data, null);
