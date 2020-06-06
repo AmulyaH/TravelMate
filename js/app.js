@@ -2,41 +2,18 @@ var zomatoAPI = "44f2ef10b109462372c1dadf31aadc51";
 
 var OpenweatherAPI = "06d6ba56c4f8e2f08f38c52fd8224fb6";
 
-var travelAPIKey = "re1hisqd696bhfquhxpifv5uzzr2agih";
-
-var travelAccountId = "5SZH7AXJ"
-
-var hereplaceAPIID = "855JLDgYc8KZ7lAF1gd2";
-
 var hereplaceAPIkey = "gSzJtXE9HZmTck1t-h7SYvVoDFXLchSr_PGJjyk9U2c"
 
 var varomato = "ef623103b5562910abed805ca339ccdd"
 
 
-var city = document.getElementById("city");
+//var city = document.getElementById("city");
 var show = false;
 var cityID = 0;
 var cityLat =0;
 var cityLong = 0;
 var country;
-
-function saveForm(){
-
-    //var requiredCity = document.getElementById("requiredCity")
-
-    /* if(!city.value)
-    {
-        requiredCity.style.display = "block";
-        show = false; 
-    }
-    else{
-        requiredCity.style.display = "none";
-        show = true;
-    } */
-    
-}
-
-
+var city;
 
 function openPage(pageName,elmnt,color) 
 {
@@ -105,17 +82,7 @@ $(document).ready(function(){
     if (!navigator.geolocation){
         $('#geolocation').hide();
     }
-  /*   // Get default city
-    city;
-    if (document.location.hash){
-        // Get city from hash
-        city = document.location.hash.substr(1);
-    }
-    else {
-        // Default city
-        city = "London";
-    } */
-    // Get and display current date
+
     date = moment();
     for (var i = 0; i < 3; i++){
         // Display date
@@ -125,26 +92,9 @@ $(document).ready(function(){
         // Go to the next day
         date = date.add(1, 'days')
     }
-    // Loading...
-   /*  loading = $('#search-loading');
-    loading.attr('class', 'loading inload'); */
-    // Get and update meteo
 
-    getMeteoByCity(city, function (data, error) {
-        if (error == null) {
-            cityLat = data.city.coord.lat;
-            cityLong = data.city.coord.lon;
-            city = data.city.name;
-            country = data.city.country
-            show = true;
-            displayMeteo(data);
-        }
-        else {
-            show = false; 
-            meteoTitle = $('#meteo-title span');
-            meteoTitle.html('City <span class="text-muted">' + city + '</span> not found');
-        }
-    });
+    show = false; 
+    
 });
 
 function getMeteoByCity(city, callback)
@@ -162,7 +112,7 @@ function getMeteoByCity(city, callback)
 
 function getRestCityId(city, callback){
     $.ajax({
-        headers: {'user-key' : varomato},
+        headers: {'user-key' : zomatoAPI},
         url: "https://developers.zomato.com/api/v2.1/cities?q=" + city,
         success: function(data){
             callback(data, null);
@@ -175,7 +125,7 @@ function getRestCityId(city, callback){
 
 function getTop5Rest(cityID, callback){
     $.ajax({
-        headers: {'user-key' : varomato},
+        headers: {'user-key' : zomatoAPI},
         url:  'https://developers.zomato.com/api/v2.1/search?entity_id='+cityID+'&entity_type=city&count=5&sort=rating&order=desc',
         success: function(data){
             callback(data, null);
@@ -188,7 +138,7 @@ function getTop5Rest(cityID, callback){
 
 function getPlacesByCity(city, cityLat, cityLong, callback){
     $.ajax({
-        url: "https://discover.search.hereapi.com/v1/discover?at=" + cityLat + "," + cityLong + "&q=attraction&limit=10&apiKey=" + hereplaceAPIkey ,//    "&account=" + travelAccountId + "&&token=" + travelAPIKey,
+        url: "https://discover.search.hereapi.com/v1/discover?at=" + cityLat + "," + cityLong + "&q=attraction&limit=10&apiKey=" + hereplaceAPIkey ,
         success: function(data){
             callback(data, null);
         },
@@ -258,8 +208,8 @@ $("#geolocation").click(function (event) {
     
     navigator.geolocation.getCurrentPosition(function (position) {
         // Loading...
-        loading = $('#search-loading');
-        loading.attr('class', 'loading inload');
+        /* loading = $('#search-loading');
+        loading.attr('class', 'loading inload'); */
         // Get latitude and longitude
         var lat = position.coords.latitude
         var lon = position.coords.longitude

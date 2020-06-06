@@ -3,7 +3,7 @@ body {
     font-family: 'Open Sans','Lobster', 'Helvetica Neue', sans-serif;
     color: #f2f2f2;
     padding: 10px;
-    background-image: url('/images/a2.jpg');
+    background-image: url('/images/mainWallpaper.jpg');
   }
 
   .topnav {
@@ -146,7 +146,7 @@ h2 a:hover{
 
 .meteo-day{
   
-  background-image: url("/images/a1.jpg");
+  background-image: url("/images/divWallpaper.jpg");
   margin: 5px 10px;
   padding: 10px 25px;
   min-height: 200px;
@@ -259,7 +259,7 @@ h2 a:hover{
 
 .collapsible {
   
-  background-image: url("/images/a1.jpg");
+  background-image: url("/images/divWallpaper.jpg");
   color: #fff;
   cursor: pointer;
   padding: 18px;
@@ -360,7 +360,7 @@ h2 a:hover{
 
  .panel-default, .divcontact{
   color: #fff;
-  background-image: url("/images/a1.jpg");
+  background-image: url("/images/divWallpaper.jpg");
  }
 
  #rest-title, .abouttext{
