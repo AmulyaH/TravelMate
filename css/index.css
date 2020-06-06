@@ -103,6 +103,10 @@ h2 a:hover{
   margin-top: 50px;
 }
 
+.pad{
+  padding: 15px, 15px;
+}
+
 .section-title h1{
   font-size: 50px;
 }
