@@ -10,6 +10,8 @@ var hereplaceAPIID = "855JLDgYc8KZ7lAF1gd2";
 
 var hereplaceAPIkey = "gSzJtXE9HZmTck1t-h7SYvVoDFXLchSr_PGJjyk9U2c"
 
+var varomato = "ef623103b5562910abed805ca339ccdd"
+
 
 var city = document.getElementById("city");
 var show = false;
@@ -159,7 +161,7 @@ function getMeteoByCity(city, callback)
 
 function getRestCityId(city, callback){
     $.ajax({
-        headers: {'user-key' : zomatoAPI},
+        headers: {'user-key' : varomato},
         url: "https://developers.zomato.com/api/v2.1/cities?q=" + city,
         success: function(data){
             callback(data, null);
@@ -172,7 +174,7 @@ function getRestCityId(city, callback){
 
 function getTop5Rest(cityID, callback){
     $.ajax({
-        headers: {'user-key' : zomatoAPI},
+        headers: {'user-key' : varomato},
         url:  'https://developers.zomato.com/api/v2.1/search?entity_id='+cityID+'&entity_type=city&count=5&sort=rating&order=desc',
         success: function(data){
             callback(data, null);
@@ -208,6 +210,7 @@ $("#meteo-form").submit(function (event) {
             cityLong = data.city.coord.lon;
             city = data.city.name;
             country = data.city.country;
+            
             displayMeteo(data);
         }
         else {
@@ -218,7 +221,7 @@ $("#meteo-form").submit(function (event) {
 
     getRestCityId(city, function (data, error) {
         if (error == null) {
-            cityID = cityID = data.location_suggestions[0].id;
+            cityID = data.location_suggestions[0].id;
         }
         else {
             restTitle = $('#rest-title span');
@@ -322,23 +325,6 @@ function getMeteoByCoordinates(lat, lon, callback){
     });
 }
 
-function displaySunriseSunset(lat, long){
-    date = moment();
-    for (var i = 0; i < 3; i++) {
-        // Get sunrise and sunset
-        var times = SunCalc.getTimes(date, lat, long);
-        var sunrise = pad(times.sunrise.getHours(), 2) + ':' + pad(times.sunrise.getMinutes(), 2);
-        var sunset = pad(times.sunset.getHours(), 2) + ':' + pad(times.sunset.getMinutes(), 2);
-        // Display sunrise and sunset
-        day = $("#meteo-day-" + (i + 1));
-        day.find('.meteo-sunrise .meteo-block-data').text(sunrise);
-        day.find('.meteo-sunset .meteo-block-data').text(sunset);
-        // Go to the next day
-        date = date.add(1, 'days')
-    }
-
-}
-
 function displayMeteo(data){
     // Update Google Map URL
     googleMapCity = "https://www.google.fr/maps/place/" + cityLat + "," + cityLong;
@@ -376,7 +362,6 @@ function displayMeteo(data){
         sunrise
         tempMoyenne += meteo.main.temp;
     }
-    displaySunriseSunset(data.city.coord.lat, data.city.coord.lon);
 }
 
 function displayRest(data, city, country, cityLat, cityLong){

@@ -1,9 +1,9 @@
 body {
     
     font-family: 'Open Sans','Lobster', 'Helvetica Neue', sans-serif;
-    color: #111;
+    color: #f2f2f2;
     padding: 10px;
-    background-color: gray;
+    background-image: url('/images/a2.jpg');
   }
 
   .topnav {
@@ -72,7 +72,7 @@ body {
     border-radius: 15px;
   }
   
-  .anibutton:hover {background-color: #7bb4be}
+  .anibutton:hover {background-color: #234352}
 
   .divPadding{
     padding-top: 5%;
@@ -123,7 +123,8 @@ h2 a:hover{
   top: 1px;
   cursor: pointer;
   font-size: 25px;
-  color: #111;
+  color: #fff;
+  font-size: 40px;
 }
 #geolocation:hover i{
   color: rgb(85, 6, 6);
@@ -133,7 +134,7 @@ h2 a:hover{
 #meteo-title{
   text-align: center;
   margin-top: 25px;
-  color: #111;
+  color: #fff;
 }
 .text-muted{
   color: #fff587 !important;
@@ -144,7 +145,8 @@ h2 a:hover{
 }
 
 .meteo-day{
-  background-color: rgba(255,255,255,0.2);
+  
+  background-image: url("/images/a1.jpg");
   margin: 5px 10px;
   padding: 10px 25px;
   min-height: 200px;
@@ -155,7 +157,7 @@ h2 a:hover{
   box-shadow: 0px 5px 5px rgba(0,0,0,0.05);
 }
 .meteo-day:hover{
-  background-color: rgba(255,255,255,0.25);
+  background-color: rgba(0,0,0,0.25);
   box-shadow: 0px 5px 5px rgba(0,0,0,0.15);
 }
 .meteo-day h3{
@@ -171,7 +173,7 @@ h2 a:hover{
 
 .meteo-block-title{
   font-size: 16px !important;
-  color: #444;
+  color: #fff;
 }
 
 .meteo-block-data{
@@ -195,11 +197,11 @@ h2 a:hover{
 }
 
 .meteo-temperature .wi{
-  color: rgba(54, 50, 50, 0.6);
+  color: rgba(200, 200, 200, 0.6);
 }
 .meteo-block-data{
   /* background-color: rgba(54, 50, 50, 0.8); */
-  color: #111;
+  color: #fff;
   font-weight: 700;
 }
 
@@ -275,7 +277,7 @@ h2 a:hover{
   padding: 0 18px;
   display: none;
   overflow: hidden;
-  background-color: gray;
+  background-color: #111;
 }
 
 .panel-group{
@@ -329,7 +331,8 @@ h2 a:hover{
   transition: 0.3s;
   width: 18rem;
   display: inline-block;
-  text-align: left
+  text-align: left;
+  color: #111;
 }
 
 .card + .card {
@@ -352,4 +355,12 @@ h2 a:hover{
  
  p {
    color: black;
+ }
+
+ .planalBody{
+   color: #111;
+ }
+
+ #rest-title{
+   color: #fff;
  }
