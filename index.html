@@ -35,37 +35,58 @@
     </div>
 
         <div id="home" class="container tabcontent divPadding">
+          <div class="row">
             <form id="meteo-form" class="form-inline my-2 my-lg-0" onsubmit="saveForm()">
                 <span id="geolocation" data-balloon="Geolocate me!" data-balloon-pos="down">
-                    <i class="fa fa-crosshairs" onclick="openPage('options', this, 'cadetblue')"></i>
+                    <i class="fa fa-crosshairs"></i>
                 </span>
-                <input name="meteo-city" id="city" class="form-control mr-sm-2" placeholder="City" required type="text">
+                <input name="city" id="city" class="form-control mr-sm-2" placeholder="City" required type="text">
                 <p id="requiredCity" style="display: none;">please enter a city name</p>
                 <h2 id="city-title" style="display: none;">
                 </h2>
-                <input type="submit" id="btnSubmit" class="btn btn-secondary my-2 my-sm-0" value="Submit" onclick="openPage('options', this, 'cadetblue')">
+                <input type="submit" id="btnSubmit" class="btn btn-secondary my-2 my-sm-0" value="Submit">
             </form>
           </div>
+          <br>
+              <div class="row container-fluid">
+                <div class="col">
+                  <div class="row1colur p-4">
+                      <button class="anibutton tabbutton font-weight-bolder" onclick="openPage('weather', this, 'cadetblue')" type="submit">Weather Forecast</button>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="row1colur p-4">
+                      <button class="anibutton tabbutton font-weight-bolder" onclick="openPage('restaurants', this, 'cadetblue')" type="submit">Places to visit</button>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="row1colur p-4">
+                      <button class="anibutton tabbutton font-weight-bolder" onclick="openPage('placesToVisit', this, 'cadetblue')" type="submit">Restaurants near by</button>
+                  </div>
+                </div>
+              </div>
+            
+          </div>
 
-          <div id="options" class="container-fluid tabcontent divPadding" style="display: none;">
+          <!-- <div id="options" class="container-fluid tabcontent divPadding" style="display: none;">
             <div class="row">
               <div class="col-sm-8 col-md-5 col-lg-3 col-xs-12 offset-lg-1">
                 <div class="row1colur p-4">
-                    <button class="btn btn-secondary my-2 my-sm-0" onclick="openPage('weather', this, 'cadetblue')" type="submit">Weather Forecast</button>
+                    <button class="anibutton tabbutton font-weight-bolder" onclick="openPage('weather', this, 'cadetblue')" type="submit">Weather Forecast</button>
                 </div>
               </div>
               <div class="col-sm-8 col-md-5 col-lg-3 col-xs-12">
                 <div class="row1colur p-4">
-                    <button class="btn btn-secondary my-2 my-sm-0" onclick="openPage('restaurants', this, 'cadetblue')" type="submit">Restaurants near by</button>
+                    <button class="anibutton tabbutton font-weight-bolder" onclick="openPage('restaurants', this, 'cadetblue')" type="submit">Places to visit</button>
                 </div>
               </div>
               <div class="col-sm-8 col-md-5 col-lg-3 col-xs-12">
                 <div class="row1colur p-4">
-                    <button class="btn btn-secondary my-2 my-sm-0" onclick="openPage('placesToVisit', this, 'cadetblue')" type="submit">Tourist places near by</button>
+                    <button class="anibutton tabbutton font-weight-bolder" onclick="openPage('placesToVisit', this, 'cadetblue')" type="submit">Restaurants near by</button>
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
 
           <div id="weather" class="container tabcontent divPadding" style="display: none;">
               <h2 id="meteo-title">

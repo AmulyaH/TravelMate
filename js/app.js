@@ -22,10 +22,9 @@ var country;
 
 function saveForm(){
 
-    city = document.getElementById("city");
-    var requiredCity = document.getElementById("requiredCity")
+    //var requiredCity = document.getElementById("requiredCity")
 
-    if(!city.value)
+    /* if(!city.value)
     {
         requiredCity.style.display = "block";
         show = false; 
@@ -33,7 +32,7 @@ function saveForm(){
     else{
         requiredCity.style.display = "none";
         show = true;
-    }
+    } */
     
 }
 
@@ -106,7 +105,7 @@ $(document).ready(function(){
     if (!navigator.geolocation){
         $('#geolocation').hide();
     }
-    // Get default city
+  /*   // Get default city
     city;
     if (document.location.hash){
         // Get city from hash
@@ -115,7 +114,7 @@ $(document).ready(function(){
     else {
         // Default city
         city = "London";
-    }
+    } */
     // Get and display current date
     date = moment();
     for (var i = 0; i < 3; i++){
@@ -127,8 +126,8 @@ $(document).ready(function(){
         date = date.add(1, 'days')
     }
     // Loading...
-    loading = $('#search-loading');
-    loading.attr('class', 'loading inload');
+   /*  loading = $('#search-loading');
+    loading.attr('class', 'loading inload'); */
     // Get and update meteo
 
     getMeteoByCity(city, function (data, error) {
@@ -137,9 +136,11 @@ $(document).ready(function(){
             cityLong = data.city.coord.lon;
             city = data.city.name;
             country = data.city.country
+            show = true;
             displayMeteo(data);
         }
         else {
+            show = false; 
             meteoTitle = $('#meteo-title span');
             meteoTitle.html('City <span class="text-muted">' + city + '</span> not found');
         }
@@ -200,8 +201,7 @@ function getPlacesByCity(city, cityLat, cityLong, callback){
 // -- Core --
 $("#meteo-form").submit(function (event) {
     // Loading...
-    loading = $('#search-loading');
-    loading.attr('class', 'loading inload');
+    //document.getElementById("city").value = "";
     // Get and update meteo
     city = event.currentTarget[0].value;
     getMeteoByCity(city, function (data, error){
@@ -210,10 +210,11 @@ $("#meteo-form").submit(function (event) {
             cityLong = data.city.coord.lon;
             city = data.city.name;
             country = data.city.country;
-            
+            show = true; 
             displayMeteo(data);
         }
         else {
+            show = false; 
             meteoTitle = $('#meteo-title span');
             meteoTitle.html('City <span class="text-muted">' + city + '</span> not found');
         }
@@ -254,7 +255,7 @@ $("#meteo-form").submit(function (event) {
 });
 
 $("#geolocation").click(function (event) {
-    show = true;
+    
     navigator.geolocation.getCurrentPosition(function (position) {
         // Loading...
         loading = $('#search-loading');
@@ -269,9 +270,12 @@ $("#geolocation").click(function (event) {
                 cityLong = data.city.coord.lon;
                 city = data.city.name;
                 country = data.city.country;
+                show = true; 
                 displayMeteo(data);
+                document.getElementById("city").value = city;
             }
             else {
+                show = false; 
                 meteoTitle = $('#meteo-title span');
                 meteoTitle.html('Can\'t  get meteo for your position');
             }
