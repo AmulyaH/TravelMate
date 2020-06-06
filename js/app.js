@@ -173,7 +173,7 @@ function getRestCityId(city, callback){
 function getTop5Rest(cityID, callback){
     $.ajax({
         headers: {'user-key' : zomatoAPI},
-        url:  'https://developers.zomato.com/api/v2.1/search?entity_id='+cityID+'&entity_type=city&count=10&sort=rating&order=desc',
+        url:  'https://developers.zomato.com/api/v2.1/search?entity_id='+cityID+'&entity_type=city&count=5&sort=rating&order=desc',
         success: function(data){
             callback(data, null);
         },
@@ -228,7 +228,7 @@ $("#meteo-form").submit(function (event) {
 
     getTop5Rest(cityID, function (data, error) {
         if (error == null) {
-            displayRest(data);
+            displayRest(data,city, country, cityLat, cityLong);
         }
         else {
             restTitle = $('#rest-title span');
@@ -280,7 +280,7 @@ $("#geolocation").click(function (event) {
 
         getTop5Rest(cityID, function (data, error) {
             if (error == null) {
-                displayRest(data);
+                displayRest(data,city, country, cityLat, cityLong);
             }
             else {
                 restTitle = $('#rest-title span');
