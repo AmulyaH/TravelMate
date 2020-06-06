@@ -131,7 +131,6 @@ h2 a:hover{
   color: rgb(85, 6, 6);
 }
 
-/* Weather */
 #meteo-title{
   text-align: center;
   margin-top: 25px;
@@ -146,7 +145,6 @@ h2 a:hover{
 }
 
 .meteo-day{
-  
   background-image: url("/images/divWallpaper.jpg");
   margin: 5px 10px;
   padding: 10px 25px;
@@ -201,7 +199,6 @@ h2 a:hover{
   color: rgba(200, 200, 200, 0.6);
 }
 .meteo-block-data{
-  /* background-color: rgba(54, 50, 50, 0.8); */
   color: #fff;
   font-weight: 700;
 }
@@ -316,10 +313,6 @@ h2 a:hover{
   align-content: center;
 }
 .rest-container {
-  /*text-align: center;
-  flex-wrap: wrap;
-  align-items: left;
-  justify-content: left;*/
   display: flex;
   flex-flow: row wrap;
   justify-content: space-evenly;
@@ -336,7 +329,6 @@ h2 a:hover{
   text-align: left;
   color: #111;
 }
-
 
 .card:hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);

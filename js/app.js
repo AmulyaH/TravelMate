@@ -4,10 +4,6 @@ var OpenweatherAPI = "06d6ba56c4f8e2f08f38c52fd8224fb6";
 
 var hereplaceAPIkey = "gSzJtXE9HZmTck1t-h7SYvVoDFXLchSr_PGJjyk9U2c"
 
-var varomato = "ef623103b5562910abed805ca339ccdd"
-
-
-//var city = document.getElementById("city");
 var show = false;
 var cityID = 0;
 var cityLat =0;
@@ -37,13 +33,10 @@ function openPage(pageName,elmnt,color)
     {
         document.getElementById(pageName).style.display = "none";
     }
-   
 }
 
 function openPageNav(pageName,elmnt,color) 
 {
-    //if(city.value)
-    {
         var i, tabcontent, tablinks;
         tabcontent = document.getElementsByClassName("tabcontent");
         for (i = 0; i < tabcontent.length; i++) 
@@ -57,8 +50,6 @@ function openPageNav(pageName,elmnt,color)
         }
         document.getElementById(pageName).style.display = "block";
         elmnt.style.backgroundColor = color;
-    }
-   
 }
 
 document.getElementById("defaultOpen").click();
@@ -78,11 +69,6 @@ function myFunction()
 
 // -- On load --
 $(document).ready(function(){
-    // If geolocation is not supported, hide the geolocaion icon
-    if (!navigator.geolocation){
-        $('#geolocation').hide();
-    }
-
     date = moment();
     for (var i = 0; i < 3; i++){
         // Display date
@@ -150,9 +136,6 @@ function getPlacesByCity(city, cityLat, cityLong, callback){
 
 // -- Core --
 $("#meteo-form").submit(function (event) {
-    // Loading...
-    //document.getElementById("city").value = "";
-    // Get and update meteo
     city = event.currentTarget[0].value;
     getMeteoByCity(city, function (data, error){
         if (error == null) {
@@ -200,16 +183,11 @@ $("#meteo-form").submit(function (event) {
         }
     });
 
-    // Don't refresh the page
     return false;
 });
 
 $("#geolocation").click(function (event) {
-    
     navigator.geolocation.getCurrentPosition(function (position) {
-        // Loading...
-        /* loading = $('#search-loading');
-        loading.attr('class', 'loading inload'); */
         // Get latitude and longitude
         var lat = position.coords.latitude
         var lon = position.coords.longitude
@@ -285,7 +263,6 @@ function displayMeteo(data){
     $('#meteo-title span').html('Weather in <a href="' + googleMapCity + '" class="text-muted meteo-city" target="_blank">' + city + ', ' + country + '</a>');
     // Update meteo for each day
     var tempMoyenne = 0;
-    //city = data.city.name;
     for (var i = 0; i < 3; i++){
         // Get meteo
         meteo = data.list[i*8];
