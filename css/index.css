@@ -85,6 +85,7 @@ body {
 
 .container{
   padding-bottom: 80px;
+  display: flex;
 }
 
 a:hover{
@@ -315,10 +316,13 @@ h2 a:hover{
   align-content: center;
 }
 .rest-container {
-  text-align: center;
+  /*text-align: center;
   flex-wrap: wrap;
   align-items: left;
-  justify-content: left;
+  justify-content: left;*/
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
 }
 .card-body {
   text-align: left;
@@ -326,19 +330,13 @@ h2 a:hover{
 
 .card {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
   width: 18rem;
-  display: inline-block;
   text-align: left;
   color: #111;
 }
 
-.card + .card {
-  margin: 0 0 0 8px;
- }
 
 .card:hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
