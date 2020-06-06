@@ -258,8 +258,9 @@ h2 a:hover{
 }
 
 .collapsible {
-  background-color: gray;
-  color: gray;
+  
+  background-image: url("/images/a1.jpg");
+  color: #fff;
   cursor: pointer;
   padding: 18px;
   width: 100%;
@@ -270,7 +271,7 @@ h2 a:hover{
 }
 
 .active, .collapsible:hover {
-  background-color: gray;
+  background-color: #fff;
 }
 
 .content {
@@ -357,10 +358,12 @@ h2 a:hover{
    color: black;
  }
 
- .planalBody{
-   color: #111;
+ .panel-default, .divcontact{
+  color: #fff;
+  background-image: url("/images/a1.jpg");
  }
 
- #rest-title{
-   color: #fff;
+ #rest-title, .abouttext{
+   color: #fff !important;
  }
+
