@@ -123,10 +123,10 @@ function getRestCityId(city, callback){
     });
 }
 
-function getTop5Rest(cityID, callback){
+function getTop6Rest(cityID, callback){
     $.ajax({
         headers: {'user-key' : zomatoAPI},
-        url:  'https://developers.zomato.com/api/v2.1/search?entity_id='+cityID+'&entity_type=city&count=5&sort=rating&order=desc',
+        url:  'https://developers.zomato.com/api/v2.1/search?entity_id='+cityID+'&entity_type=city&count=6&sort=rating&order=desc',
         success: function(data){
             callback(data, null);
         },
@@ -180,7 +180,7 @@ $("#meteo-form").submit(function (event) {
         }
     });
 
-    getTop5Rest(cityID, function (data, error) {
+    getTop6Rest(cityID, function (data, error) {
         if (error == null) {
             displayRest(data,city, country, cityLat, cityLong);
         }
@@ -235,7 +235,7 @@ $("#geolocation").click(function (event) {
             }, 500);
         });
 
-        getTop5Rest(cityID, function (data, error) {
+        getTop6Rest(cityID, function (data, error) {
             if (error == null) {
                 displayRest(data,city, country, cityLat, cityLong);
             }
@@ -320,7 +320,7 @@ function displayMeteo(data){
 
 function displayRest(data, city, country, cityLat, cityLong){
     googleMapCity = "https://www.google.fr/maps/place/" + cityLat + "," + cityLong;
-    $('#rest-title span').html('Restaurants in <a href="' + googleMapCity + '" class="text-muted meteo-city" target="_blank">' + city + ', ' + country + '</a>');
+    $('#rest-title span').html('Top 6 Restaurants in <a href="' + googleMapCity + '" class="text-muted meteo-city" target="_blank">' + city + ', ' + country + '</a>');
 
     for(var i = 0; i < data.restaurants.length; i++)
      {
